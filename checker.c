@@ -6,64 +6,62 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 13:21:23 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/01/04 15:43:59 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:47:40 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdlib.h>
+#include "push_swap.h"
 
-int	digit_check(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
-
-int	space_check(char s)
-{
-	if ((s >= 9 && s <= 13) || s == 32)
-		return (1);
-	return (0);
-}
-
-int	put_error(void)
+void	put_error()
 {
 	write(1, "Error\n", 6);
-		return (0);
+		exit (EXIT_FAILURE);
 }
 
-int	ps_atoi(const char *str)
+int	char_checker(char *str)
 {
-	int	count;
-	int	minus;
-	int	result;
+	int	i;
 
-	count = 0;
-	minus = 1;
-	result = 0;
-	while (space_check(str[count]))
-		count++;
-	if (str[count] == '-' && str[count + 1])
+	i = 0;
+	while (str[i])
 	{
-		minus *= -1;
-		count++;
+		if (!ft_isdigit(str[i))
+		{
+			if (str[i] str[i] == '-' && str[i + 1])
+				return (1);
+			if (str[i] str[i] == '+' && str[i + 1])
+				return (1);
+		return (0);
+		}
+	i++;
 	}
-	while (str[count])
+	return (0);
+}
+
+int ps_checker(t_list lst)
+{
+	while (lst != NULL)
 	{
-		if (!digit_check(str[count]))
-			return (put_error());
-		result *= 10;
-		result += str[count] - '0';
-		count++;
+		if (!char_checker(argv))
+			return (EXIT_FAILURE);
+		if	(!dup_checker(argv))
+			return (EXIT_FAILURE);
+		return (EXIT_SUCCESS);
 	}
-	result *= minus;
-	return (result);
+}
+
+void check_argv(char **argv)
+{
+	argv = ft_split(argv[0], ' ');
+	if (argc < 2)
+		return (EXIT_FAILURE);
+	if (!ps_checker(argv))
+		return (EXIT_FAILURE);
 }
 
 int	main (int argc, char **argv)
 {	
-	if (argc < 2)
-		return (0);
-	if (!ps_atoi(*argv))
-		return (0);
+
 }
