@@ -6,24 +6,25 @@
 #    By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/03 13:51:13 by ivan-mel          #+#    #+#              #
-#    Updated: 2023/01/10 18:46:02 by ivan-mel         ###   ########.fr        #
+#    Updated: 2023/01/17 18:30:16 by ivan-mel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		= 	push_swap
-LIBS		=	./libft/libft.a
-HEADER		=	-I ${LIBFT}
-HEADERS		=	libft/libft.h
+NAME 		:= 	push_swap
+LIBS		:=	./libft/libft.a
+HEADER		:=	-I libft
+HEADERS		:=	libft/libft.h
 #UTILS
-RM 			=	rm -rf
-FLAGS 		=	-Wall -Werror -Wextra
-CC 			= 	gcc
-SRC			=	checker.c\
+RM 			:=	rm -rf
+FLAGS 		:=	-Wall -Werror -Wextra
+SRC			:=	checker.c	\
+				push_swap.c	\
+				main.c \
+				list.c		
 #SRCB		=	
-OBJ_FILES	=	${SRC:.c=.o}
 #OBJB_FILES	=	${SRCB:.c=.o}
-OBJ_DIR	=	./obj/
-SRC_DIR = 	./src/
+OBJ_DIR		:=	./obj
+SRC_DIR 	:= 	./src
 # Reset
 Color_Off	=	"\033[0m"			# Text Reset
 # Regular Colors
@@ -37,13 +38,10 @@ Cyan		=	"\033[0;36m"		# Cyan
 White		=	"\033[0;37m"		# White
 
 # Add obj directory to obj path
-OBJ = $(addprefix $(OBJ_DIR), $(OBJ_RAW))
+OBJ		:=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
+SRC		:=	$(addprefix $(SRC_DIR)/,$(SRC))
 
-# libs:
-# 	@${MAKE} -C libft
-
-# all:
-# 	libs ${NAME}
+all: ${NAME}
 
 ${NAME}: ${OBJ}
 	@echo ${Blue} Building ${NAME} ${Color_Off}
@@ -51,10 +49,13 @@ ${NAME}: ${OBJ}
 	@${CC} $^ ${LIBS} -o ${NAME}
 	@echo ${Green} Complete 😊 ${Color_off}
 
-$(OBJ_DIR)%.o: %.c
-	@mkdir -p ${OBJ_DIR}
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS) | $(OBJ_DIR)
 	@echo ${Blue} Compiling: $< ${Color_Off}
-	@${CC} ${FLAGS} ${HEADER} -c $< -o $@
+	${CC} ${FLAGS} ${HEADER} -c $< -o $@
+
+
+$(OBJ_DIR):
+	@mkdir $@
 
 clean:
 	@echo ${Yellow} Deleting ${OBJ_DIR} ${Color_off}
@@ -67,4 +68,5 @@ fclean: clean
 	@${RM} ${NAME}
 
 re:	fclean all
+
 .PHONY: all clean fclean re
