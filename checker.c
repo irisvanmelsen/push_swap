@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 13:21:23 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/01/11 11:47:40 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/01/17 13:08:01 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	put_error()
 		exit (EXIT_FAILURE);
 }
 
-int	char_checker(char *str)
+int	digit_checker(char *str)
 {
 	int	i;
 
@@ -31,37 +31,30 @@ int	char_checker(char *str)
 		{
 			if (str[i] str[i] == '-' && str[i + 1])
 				return (1);
-			if (str[i] str[i] == '+' && str[i + 1])
-				return (1);
 		return (0);
 		}
 	i++;
 	}
-	return (0);
+	return (1);
 }
 
 int ps_checker(t_list lst)
 {
+	if (lst == NULL)
+		return (put_error());
 	while (lst != NULL)
 	{
-		if (!char_checker(argv))
-			return (EXIT_FAILURE);
-		if	(!dup_checker(argv))
-			return (EXIT_FAILURE);
-		return (EXIT_SUCCESS);
+		if (!digit_checker(argv))
+			return (put_error());
 	}
 }
 
-void check_argv(char **argv)
+void check_args(char **argv)
 {
-	argv = ft_split(argv[0], ' ');
-	if (argc < 2)
-		return (EXIT_FAILURE);
+	if (argv == 2)
+		argv = ft_split(argv[1], ' ');
+	if (!argv)
+		return (NULL);
 	if (!ps_checker(argv))
-		return (EXIT_FAILURE);
-}
-
-int	main (int argc, char **argv)
-{	
-
+		return (NULL);
 }

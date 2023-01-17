@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 12:39:29 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/01/17 13:26:34 by ivan-mel         ###   ########.fr       */
+/*   Created: 2023/01/03 13:38:28 by ivan-mel          #+#    #+#             */
+/*   Updated: 2023/01/17 13:36:34 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
 #include "push_swap.h"
 
-t_stack	create_node(int nb)
+int	main (int argc, char **argv)
 {
-	t_stack *node;
+	t_stack	*stack_a;
 
-	node = malloc(sizeof(t_stack));
-	if (!node)
-		return (NULL);
-	node->nb = nb;
-	node->next = NULL;
-	node->previous = NULL;
-	return (node);
+	if (argv < 2)
+		return (EXIT_FAILURE);
+	if (!check_args(argv))
+		return (put_error());
+	stack_a = fill_list(argc - 1);
+
 }
-
-void	fill_list(int nb)
-{
-	t_stack *tmp;
-
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = create_node(int b);
-}
-
-tmp->next->nb > tmp->next
