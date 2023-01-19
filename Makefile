@@ -6,7 +6,7 @@
 #    By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/03 13:51:13 by ivan-mel          #+#    #+#              #
-#    Updated: 2023/01/17 18:30:16 by ivan-mel         ###   ########.fr        #
+#    Updated: 2023/01/19 18:42:46 by ivan-mel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,9 @@ HEADERS		:=	libft/libft.h
 #UTILS
 RM 			:=	rm -rf
 FLAGS 		:=	-Wall -Werror -Wextra
-SRC			:=	checker.c	\
-				push_swap.c	\
+SRC			:=	parser.c	\
 				main.c \
-				list.c		
+				list.c
 #SRCB		=	
 #OBJB_FILES	=	${SRCB:.c=.o}
 OBJ_DIR		:=	./obj
@@ -51,7 +50,7 @@ ${NAME}: ${OBJ}
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS) | $(OBJ_DIR)
 	@echo ${Blue} Compiling: $< ${Color_Off}
-	${CC} ${FLAGS} ${HEADER} -c $< -o $@
+	@${CC} ${FLAGS} ${HEADER} -c $< -o $@
 
 
 $(OBJ_DIR):
