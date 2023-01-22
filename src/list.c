@@ -6,7 +6,7 @@
 /*   By: iris <iris@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:39:29 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/01/21 17:52:41 by iris             ###   ########.fr       */
+/*   Updated: 2023/01/22 21:52:37 by iris             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_stack	*create_node(int nb)
 {
 	t_stack *node;
 
-	node = malloc(sizeof(t_list));
+	node = malloc(sizeof(t_stack));
 	if (!node)
 		return (NULL);
 	node->nb = nb;

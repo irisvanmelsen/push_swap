@@ -6,7 +6,7 @@
 /*   By: iris <iris@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:28:56 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/01/21 17:52:42 by iris             ###   ########.fr       */
+/*   Updated: 2023/01/22 22:20:16 by iris             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ int	digit_checker(char *str)
 	}
 	while (str[i])
 	{
-		if (ft_isdigit(str[i]))
-			i++;
-			else 
-				return (0);
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
 	}
 	k = ft_atolong(str);
 	if (k > 2147483647 || k < -2147483648)
@@ -75,28 +74,24 @@ int	parse_args(char **str, t_stack **stack_a)
 
 int	check_args(char **argv, t_stack **stack_a)
 {
-	char **amount;
+	char ** amount;
 	int	i;
 	
 	i = 1;
-	while (*argv)
+	while (argv[i])
 	{
-		if (!digit_checker(*argv))
-		{
-			printf("%s", "Hello");
-			write(1, "Error\n", 6);
+		if (!digit_checker(argv[i]))
 			return (0);
-		}
-		amount = ft_split(*argv, ' ');
+		amount = ft_split(argv[i], ' ');
 		if (!amount)
-			write(1, "Error\n", 6);
+			return (0);
 		if (!parse_args(amount, stack_a))
 		{
 			free(amount);
 			return(0);
 		}
 	free(amount);
-	argv++;
+	i++;
 	}
 	return (1);
 }
