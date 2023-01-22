@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iris <iris@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 17:31:00 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/01/19 18:39:55 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/01/21 17:52:40 by iris             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@
 
 int	main (int argc, char **argv)
 {
-	t_stack	*stack;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 
-	stack = 0;
+	stack_a = NULL;
+	stack_b = NULL;
 	if (argc < 2)
 		return (EXIT_SUCCESS);
-	argv = parse_args(argv, argc);
-	create_list(argc, argv, &stack);
-	return (0);
+	printf("%s", "Hello");
+	if (!check_args(argv, &stack_a))
+		return(0);
+	return (EXIT_SUCCESS);
 }

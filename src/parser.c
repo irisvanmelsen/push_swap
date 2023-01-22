@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iris <iris@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:28:56 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/01/19 18:43:34 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/01/21 17:52:42 by iris             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,27 @@ int	digit_checker(char *str)
 	int	i;
 
 	i = 0;
+	long k;
+	if (str[0] == '-')
+	{
+		if (!str[1])
+			return (0);
+		i++;
+	}
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]))
-		{
-			if (str[i] == '-' && str[i + 1])
-				return (1);
-			return (0);
-		}
-	i++;
+		if (ft_isdigit(str[i]))
+			i++;
+			else 
+				return (0);
 	}
+	k = ft_atolong(str);
+	if (k > 2147483647 || k < -2147483648)
+		return(0);
 	return (1);
 }
 
-int	ft_atolong(const char *str)
+int	ft_atolong(char *str)
 {
 	int	count;
 	int	minus;
@@ -41,8 +48,6 @@ int	ft_atolong(const char *str)
 	count = 0;
 	minus = 1;
 	result = 0;
-	while ((str[count] >= 9 && str[count] <= 13) || str[count] == 32)
-		count++;
 	if (str[count] == '-')
 	{
 		minus *= -1;
@@ -58,28 +63,40 @@ int	ft_atolong(const char *str)
 	return (result);
 }
 
-// char *ps_checker(t_stack *lst, char **argv)
-// {
-// 	if (lst == NULL)
-// 		write(1, "Error\n", 6);
-// 	while (lst != NULL)
-// 	{
-// 		if (!digit_checker(*argv))
-// 			write(1, "Error\n", 6);
-// 	}
-// 	return(0);
-// }
-
-char	**parse_args(char **argv, int argc)
+int	parse_args(char **str, t_stack **stack_a)
 {
-	int	i;
+	while (*str)
+	{
+		add_to_end(stack_a, create_node(ft_atolong(*str)));
+		str++;
+	}
+	return (1);
+}
 
-	i = 0;
-	if (argc == 2)
-		argv = ft_split(argv[1], ' ');
-	if (!argv)
-		write(1, "Error\n", 6);
-	if (digit_checker(*argv) == 0)
-		write(1, "Error\n", 6);
-	return (argv);
+int	check_args(char **argv, t_stack **stack_a)
+{
+	char **amount;
+	int	i;
+	
+	i = 1;
+	while (*argv)
+	{
+		if (!digit_checker(*argv))
+		{
+			printf("%s", "Hello");
+			write(1, "Error\n", 6);
+			return (0);
+		}
+		amount = ft_split(*argv, ' ');
+		if (!amount)
+			write(1, "Error\n", 6);
+		if (!parse_args(amount, stack_a))
+		{
+			free(amount);
+			return(0);
+		}
+	free(amount);
+	argv++;
+	}
+	return (1);
 }
