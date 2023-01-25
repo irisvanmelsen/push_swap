@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   instructions.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 17:31:00 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/01/25 18:55:34 by ivan-mel         ###   ########.fr       */
+/*   Created: 2023/01/25 11:30:55 by ivan-mel          #+#    #+#             */
+/*   Updated: 2023/01/25 19:09:02 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	main (int argc, char **argv)
-{
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+// Shift down all elements of stack a by 1.
+// The last element becomes the first one.
 
-	stack_a = NULL;
-	stack_b = NULL;
-	if (argc < 2)
-	{
-		write(1, "Error\n", 6);
-		return (0);
-	}
-	if (!parse_args(argv, &stack_a))
-	{
-		write(1, "Error\n", 6);
-		return (0);
-	}
-	return (EXIT_SUCCESS);
+void	rotate(t_stack **stack)
+{
+	if (!stack)
+		return ;
+	*stack = (*stack)->prev;
 }
+
+//  ra and rb at the same time
+
+void	rotate_rr(t_stack **stack_a, t_stack **stack_b)
+{
+	rotate(**stack_a);
+	rotate(**stack_b);
+}
+

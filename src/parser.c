@@ -6,13 +6,13 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:28:56 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/01/23 18:15:19 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/01/25 19:00:48 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	digit_checker(char *str, int *nb, t_stack **stack_a)
+int	digit_checker(char *str, int *nb)
 {
 	int	i;
 
@@ -31,9 +31,10 @@ int	digit_checker(char *str, int *nb, t_stack **stack_a)
 	}
 	if (!ft_atoi_overflow(str, nb))
 		return (0);
-	parse_args(stack_a, nb);
 	return (1);
 }
+// A normal atoi does not work due to overflow therefore
+// I am using this function.
 
 int	ft_atoi_overflow(char *str, int *nb)
 {
@@ -53,23 +54,17 @@ int	ft_atoi_overflow(char *str, int *nb)
 	while (str[count] >= '0' && str[count] <= '9')
 	{
 		*nb += str[count] - '0';
-		if (str[count + 1] >= '0' && str[count + 1] <= '9')
-			*nb *= 10;
 		if (*nb < 0 && (*nb != INT_MIN || minus == 1))
 			return (0);
+		if (str[count + 1] >= '0' && str[count + 1] <= '9')
+			*nb *= 10;
 		count++;
 	}
 	*nb *= minus;
 	return (1);
 }
 
-int	parse_args(t_stack **stack_a, int *nb)
-{
-	add_to_end(stack_a, create_node(*nb));
-		return (1);
-}
-
-int	check_args(char **argv, t_stack **stack_a)
+int	parse_args(char **argv, t_stack **stack_a)
 {
 	char ** amount;
 	int	i;
@@ -81,8 +76,9 @@ int	check_args(char **argv, t_stack **stack_a)
 		amount = ft_split(argv[i], ' ');
 		if (!amount)
 			return (0);
-		if (!digit_checker(argv[i], &nb, stack_a))
+		if (!digit_checker(argv[i], &nb))
 			return (0);
+		add_to_end(stack_a, create_node(nb));
 		if (ft_strlen(argv[i]) == 0)
 			return (0);
 	free(amount);
