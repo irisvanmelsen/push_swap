@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:39:29 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/01/25 19:10:16 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/01/29 22:30:25 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_stack	*create_node(int nb)
 {
-	t_stack *node;
+	t_stack	*node;
 
 	node = malloc(sizeof(t_stack));
 	if (!node)
@@ -39,7 +39,7 @@ void	add_to_end(t_stack **lst, t_stack *new)
 	{
 		tmp = *lst;
 		while (tmp->next != *lst)
-				tmp = tmp->next;
+			tmp = tmp->next;
 		tmp->next = new;
 		new->prev = tmp;
 		new->next = *lst;
