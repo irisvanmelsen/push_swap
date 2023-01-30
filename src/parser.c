@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:28:56 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/01/25 19:00:48 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/01/30 17:27:35 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ int	ft_atoi_overflow(char *str, int *nb)
 
 int	parse_args(char **argv, t_stack **stack_a)
 {
-	char ** amount;
-	int	i;
-	int nb;
-	
+	char	**amount;
+	int		i;
+	int		nb;
+
 	i = 1;
 	while (argv[i])
 	{
@@ -81,7 +81,7 @@ int	parse_args(char **argv, t_stack **stack_a)
 		add_to_end(stack_a, create_node(nb));
 		if (ft_strlen(argv[i]) == 0)
 			return (0);
-	free(amount);
+		free(amount);
 	i++;
 	}
 	return (1);

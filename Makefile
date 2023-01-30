@@ -6,7 +6,7 @@
 #    By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/03 13:51:13 by ivan-mel          #+#    #+#              #
-#    Updated: 2023/01/19 18:42:46 by ivan-mel         ###   ########.fr        #
+#    Updated: 2023/01/30 17:17:27 by ivan-mel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,16 @@ HEADERS		:=	libft/libft.h
 #UTILS
 RM 			:=	rm -rf
 FLAGS 		:=	-Wall -Werror -Wextra
-SRC			:=	parser.c	\
+SRC			:=	parser.c \
 				main.c \
-				list.c
+				list.c \
+				push.c \
+				rotate.c \
+				swap.c \
+				operations1.c \
+				operations2.c \
+				operations3.c \
+				utils1.c \
 #SRCB		=	
 #OBJB_FILES	=	${SRCB:.c=.o}
 OBJ_DIR		:=	./obj

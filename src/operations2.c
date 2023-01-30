@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   operations2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 17:31:00 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/01/30 17:23:59 by ivan-mel         ###   ########.fr       */
+/*   Created: 2023/01/30 13:45:01 by ivan-mel          #+#    #+#             */
+/*   Updated: 2023/01/30 13:49:45 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	main (int argc, char **argv)
+void	ra(t_stack **stack_a)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	rotate(stack_a);
+	write(1, "ra\n", 3);
+}
 
-	stack_a = NULL;
-	stack_b = NULL;
-	if (argc < 2)
-	{
-		write(1, "Error\n", 6);
-		return (0);
-	}
-	if (!parse_args(argv, &stack_a))
-	{
-		write(1, "Error\n", 6);
-		return (0);
-	}
-	bubblesort(&stack_a);
-	return (EXIT_SUCCESS);
+void	rb(t_stack **stack_b)
+{
+	rotate(stack_b);
+	write(1, "rb\n", 3);
+}
+
+void	rr(t_stack **stack_a, t_stack **stack_b)
+{
+	rotate(stack_a);
+	rotate(stack_b);
+	write(1, "rr\n", 3);
 }
