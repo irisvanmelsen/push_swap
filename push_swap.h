@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 12:51:22 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/01/30 17:20:49 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/01/31 18:15:46 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	rra(t_stack **stack_a);
 void	rrb(t_stack **stack_b);
 void	rrr(t_stack **stack_a, t_stack **stack_b);
 void	bubblesort(t_stack **stack);
+void	bs_sort(t_stack *tmp, int *swap, t_stack *stack);
 void	bs_swap(t_stack *stack1, t_stack *stack2);
+// void	print_stack(t_stack *a);
 
 #endif
