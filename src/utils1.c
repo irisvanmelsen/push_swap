@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:50:52 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/01/31 18:15:15 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/01 11:30:43 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,18 +82,18 @@ void	bs_swap(t_stack *stack1, t_stack *stack2)
 
 // test function which prints the stack
 
-// void	print_stack(t_stack *stack)
-// {
-// 	t_stack	*start;
+void	print_stack(t_stack *stack)
+{
+	t_stack	*start;
 
-// 	if (!stack)
-// 		return ;
-// 	start = stack;
-// 	while (stack)
-// 	{
-// 		printf("output: %d\n", stack->nb);
-// 		stack = stack->next;
-// 		if (stack == start)
-// 			break ;
-// 	}
-// }
+	if (!stack)
+		return ;
+	start = stack;
+	while (stack)
+	{
+		printf("output: %d\n", stack->nb);
+		stack = stack->next;
+		if (stack == start)
+			break ;
+	}
+}

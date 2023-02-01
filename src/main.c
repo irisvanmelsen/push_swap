@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 17:31:00 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/01/31 18:15:19 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/01 16:50:43 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	main (int argc, char **argv)
 		return (0);
 	}
 	bubblesort(&stack_a);
-	// print_stack(stack_a);
+	print_stack(stack_a);
+	if (!find_pivot(stack_a))
+		write (1, "Error\n", 6);
 	return (EXIT_SUCCESS);
 }
