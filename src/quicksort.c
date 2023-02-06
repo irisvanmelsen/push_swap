@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 13:57:00 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/01 17:15:40 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/06 14:33:04 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	find_pivot(t_stack *stack)
 
 	one = stack;
 	two = stack;
-	if (!divided_by_2(stack))
-		return (0);
 	while (two && two->next != stack)
 	{
+		if (two->next->next == stack)
+			break ;
 		one = one->next;
 		two = two->next->next;
 	}
@@ -30,21 +30,26 @@ int	find_pivot(t_stack *stack)
 	return (one->nb);
 }
 
-int	divided_by_2(t_stack *stack)
+void	quicksort(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*first;
-	int		i;
+	algorithm(stack_a, stack_b, find_pivot(*stack_a));
+}
 
-	first = stack;
-	i = 0;
-	while (first->next != stack)
+void	algorithm(t_stack **stack_a, t_stack **stack_b, int pivot)
+{
+	t_stack	*last;
+	t_stack	*tmp;
+
+	last = *stack_a;
+	tmp = *stack_a;
+	while (last->next != tmp)
+		last = last->next;
+	while (tmp != last)
 	{
-		first = first->next;
-		i++;
+		if (tmp->nb < pivot)
+		{
+			pb(stack_a, stack_b);
+		}
+		tmp = tmp->next;
 	}
-	i++;
-	printf("i: %d\n", i);
-	if (i % 2 == 0)
-		return (0);
-	return (1);
 }
