@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 12:51:22 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/06 14:28:18 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/08 15:25:44 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void	bs_sort(t_stack *tmp, int *swap, t_stack *stack);
 void	bs_swap(t_stack *stack1, t_stack *stack2);
 void	print_stack(t_stack *a);
 int		find_pivot(t_stack *stack);
-void	quicksort(t_stack **stack_a, t_stack **stack_b);
-void	algorithm(t_stack **stack_a, t_stack **stack_b, int pivot);
+void	quicksort_a(t_stack **stack_a, t_stack **stack_b);
+// void	quicksort_b(t_stack **stack_a, t_stack **stack_b);
+void	algorithm(t_stack **stack_a, t_stack **stack_b);
 
 #endif

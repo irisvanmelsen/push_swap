@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 17:31:00 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/06 16:45:27 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/08 15:28:47 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	main (int argc, char **argv)
 	}
 	bubblesort(&stack_a);
 	print_stack(stack_a);
-	quicksort(&stack_a, &stack_b);
+	algorithm(&stack_a, &stack_b);
 	print_stack(stack_b);
+	algorithm(&stack_a, &stack_b);
 	return (EXIT_SUCCESS);
 }
