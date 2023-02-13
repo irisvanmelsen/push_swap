@@ -1,44 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 17:31:00 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/13 16:48:11 by ivan-mel         ###   ########.fr       */
+/*   Created: 2023/02/13 12:43:23 by ivan-mel          #+#    #+#             */
+/*   Updated: 2023/02/13 15:10:16 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	error_message(void)
+int	check_b(t_stack *stack_b, int total)
 {
-	write(STDERR_FILENO, "Error\n", 6);
-	exit(EXIT_FAILURE);
+	if (!swap_a(stack_b, total))
+		return (0);
+	if (!sorted_a(stack_b, total))
+		return (0);
+	return (1);
 }
 
-int	main (int argc, char **argv)
+int	swap_b(t_stack *stack_b, int total)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	int		total;
+	if (total <= 2)
+	{
+		if (stack_b->nb > stack_b->next->nb)
+			sb(&stack_b);
+		return (1);
+	}
+	return (0);
+}
 
-	stack_a = NULL;
-	stack_b = NULL;
-	total = argc;
-	if (argc < 2)
+int	sorted_b(t_stack *stack_b, int total)
+{
+	int	i;
+
+	i = 1;
+	while (total > i)
 	{
-		error_message();
-		return (0);
+		if (stack_b->nb > stack_b->next->nb)
+			return (0);
+		i++;
 	}
-	if (!parse_args(argv, &stack_a))
-	{
-		error_message();
-		return (0);
-	}
-	printf("real stack:\n");
-	print_stack(stack_a);
-	quicksort_a(&stack_a, &stack_b, argc);
-	return (EXIT_SUCCESS);
+	return (1);
 }

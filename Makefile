@@ -6,12 +6,12 @@
 #    By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/03 13:51:13 by ivan-mel          #+#    #+#              #
-#    Updated: 2023/02/01 16:25:01 by ivan-mel         ###   ########.fr        #
+#    Updated: 2023/02/13 16:34:38 by ivan-mel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		:= 	push_swap
-LIBS		:=	./libft/libft.a
+LIBS		:=	./libft/libft.a -fsanitize=address -g
 HEADER		:=	-I libft
 HEADERS		:=	libft/libft.h
 #UTILS
@@ -27,6 +27,8 @@ SRC			:=	parser.c \
 				operations2.c \
 				operations3.c \
 				utils1.c \
+				utils2.c \
+				utils3.c \
 				quicksort.c \
 #SRCB		=	
 #OBJB_FILES	=	${SRCB:.c=.o}

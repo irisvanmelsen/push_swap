@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:39:29 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/01/31 16:32:44 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/13 16:44:32 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_stack	*create_node(int nb)
 	node = malloc(sizeof(t_stack));
 	if (!node)
 		return (NULL);
+	node->index = 0;
 	node->nb = nb;
 	node->next = NULL;
 	node->prev = NULL;

@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 12:51:22 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/08 15:25:44 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/13 16:29:18 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 typedef struct s_stack
 {
 	int				nb;
+	int				index;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
@@ -51,13 +52,19 @@ void	rr(t_stack **stack_a, t_stack **stack_b);
 void	rra(t_stack **stack_a);
 void	rrb(t_stack **stack_b);
 void	rrr(t_stack **stack_a, t_stack **stack_b);
-void	bubblesort(t_stack **stack);
+void	bubblesort(t_stack *stack);
 void	bs_sort(t_stack *tmp, int *swap, t_stack *stack);
 void	bs_swap(t_stack *stack1, t_stack *stack2);
 void	print_stack(t_stack *a);
 int		find_pivot(t_stack *stack);
-void	quicksort_a(t_stack **stack_a, t_stack **stack_b);
-// void	quicksort_b(t_stack **stack_a, t_stack **stack_b);
-void	algorithm(t_stack **stack_a, t_stack **stack_b);
+void	quicksort_a(t_stack **stack_a, t_stack **stack_b, int total);
+void	quicksort_b(t_stack **stack_a, t_stack **stack_b, int total);
+int		check_a(t_stack *stack_b, int total);
+int		swap_a(t_stack *stack_a, int total);
+int		sorted_a(t_stack *stack_b, int total);
+int		check_b(t_stack *stack_b, int total);
+int		swap_b(t_stack *stack_b, int total);
+int		sorted_b(t_stack *stack_b, int total);
+void	error_message(void);
 
 #endif

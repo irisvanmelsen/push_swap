@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:50:52 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/01 11:30:43 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/13 16:29:47 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,28 @@
 // int swap is a counter that keeps track of whether
 // a swap happened or not
 
-void	bubblesort(t_stack **stack)
+void	bubblesort(t_stack *stack)
 {
 	t_stack	*tmp;
 	int		swap;
 
-	tmp = *stack;
+	tmp = stack;
 	if (!tmp)
 		return ;
 	swap = 1;
 	while (swap != 0)
 	{
 		swap = 0;
-		bs_sort(tmp, &swap, *stack);
+		bs_sort(tmp, &swap, stack);
 	}
+	while (tmp)
+	{
+		(stack)->index++;
+		(stack) = (stack)->next;
+		if (tmp == stack)
+			break ;
+	}
+	return ;
 }
 
 // tmp is used as a starting point of sorting process
@@ -54,7 +62,7 @@ void	bs_sort(t_stack *tmp, int *swap, t_stack *stack)
 	{
 		if (tmp->nb == tmp->next->nb && error == 0)
 		{
-			write(1, "Error\n", 6);
+			write(2, "Error\n", 6);
 			error = 1;
 			exit(0);
 		}
