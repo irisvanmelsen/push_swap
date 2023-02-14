@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:43:23 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/13 15:10:16 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/14 16:34:14 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	swap_b(t_stack *stack_b, int total)
 {
 	if (total <= 2)
 	{
-		if (stack_b->nb > stack_b->next->nb)
+		if (stack_b->index < stack_b->next->index)
 			sb(&stack_b);
 		return (1);
 	}
@@ -37,9 +37,11 @@ int	sorted_b(t_stack *stack_b, int total)
 	int	i;
 
 	i = 1;
+	if (total == 1)
+		return (1);
 	while (total > i)
 	{
-		if (stack_b->nb > stack_b->next->nb)
+		if (stack_b->index > stack_b->next->index)
 			return (0);
 		i++;
 	}

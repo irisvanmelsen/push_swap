@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:50:52 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/13 16:29:47 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:54:57 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,40 @@
 // int swap is a counter that keeps track of whether
 // a swap happened or not
 
-void	bubblesort(t_stack *stack)
+void	stack_sorted_same(t_stack *stack, t_stack *sorted, int i)
+{
+	while (stack->nb != sorted->nb)
+	{
+		stack = stack->next;
+	}
+	stack->index = i;
+}
+
+void	bubblesort(t_stack *stack, t_stack *sorted)
 {
 	t_stack	*tmp;
 	int		swap;
+	int		i;
 
-	tmp = stack;
+	i = INT_MIN;
+	tmp = sorted;
 	if (!tmp)
 		return ;
 	swap = 1;
 	while (swap != 0)
 	{
 		swap = 0;
-		bs_sort(tmp, &swap, stack);
+		bs_sort(tmp, &swap, sorted);
 	}
-	while (tmp)
+	stack_sorted_same(stack, sorted, i);
+	sorted = sorted->next;
+	i++;
+	while (sorted != tmp)
 	{
-		(stack)->index++;
-		(stack) = (stack)->next;
-		if (tmp == stack)
-			break ;
+		stack_sorted_same(stack, sorted, i);
+		// printf("%d\n", stack->index);
+		sorted = sorted->next;
+		i++;
 	}
 	return ;
 }
@@ -47,7 +61,7 @@ void	bubblesort(t_stack *stack)
 // then tmp continues to sort up until the end (last)
 // has been reached
 // if there is only one number / node then tmp->next = stack
-// in this case last is updated to be equal to tmp
+// in this case last is updated to be equal to tmp	
 
 void	bs_sort(t_stack *tmp, int *swap, t_stack *stack)
 {
@@ -100,6 +114,24 @@ void	print_stack(t_stack *stack)
 	while (stack)
 	{
 		printf("output: %d\n", stack->nb);
+		stack = stack->next;
+		if (stack == start)
+			break ;
+	}
+}
+
+// test function which prints the index
+
+void	print_index(t_stack *stack)
+{
+	t_stack	*start;
+
+	if (!stack)
+		return ;
+	start = stack;
+	while (stack)
+	{
+		printf("index: %d\n", stack->index);
 		stack = stack->next;
 		if (stack == start)
 			break ;

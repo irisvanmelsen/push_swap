@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 12:51:22 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/13 16:29:18 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:18:59 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	rr(t_stack **stack_a, t_stack **stack_b);
 void	rra(t_stack **stack_a);
 void	rrb(t_stack **stack_b);
 void	rrr(t_stack **stack_a, t_stack **stack_b);
-void	bubblesort(t_stack *stack);
+void	bubblesort(t_stack *stack, t_stack *sorted);
 void	bs_sort(t_stack *tmp, int *swap, t_stack *stack);
 void	bs_swap(t_stack *stack1, t_stack *stack2);
 void	print_stack(t_stack *a);
@@ -66,5 +66,8 @@ int		check_b(t_stack *stack_b, int total);
 int		swap_b(t_stack *stack_b, int total);
 int		sorted_b(t_stack *stack_b, int total);
 void	error_message(void);
+int		find_middle(t_stack *stack);
+void	print_index(t_stack *stack);
+void	stack_sorted_same(t_stack *stack, t_stack *sorted, int i);
 
 #endif
