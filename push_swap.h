@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 12:51:22 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/14 17:18:59 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/15 15:39:10 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,7 @@ void	error_message(void);
 int		find_middle(t_stack *stack);
 void	print_index(t_stack *stack);
 void	stack_sorted_same(t_stack *stack, t_stack *sorted, int i);
+void	sort_a_three(t_stack *stack);
+void	sort_b_three(t_stack *stack);
 
 #endif

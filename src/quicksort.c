@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 13:57:00 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/14 17:57:16 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/15 17:29:45 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ int	find_pivot(t_stack *stack)
 	printf("check stack:\n");
 	print_stack(stack);
 	bubblesort(stack, *sorted);
-	printf("after bubblesort stack:\n");
-	print_stack(stack);
-	printf("after bubblesort sorted:\n");
-	print_stack(*sorted);
-	printf("after bubblesort index:\n");
-	print_index(stack);
+	// printf("after bubblesort stack:\n");
+	// print_stack(stack);
+	// printf("after bubblesort sorted:\n");
+	// print_stack(*sorted);
+	// printf("after bubblesort index:\n");
+	// print_index(stack);
 	pivot = find_middle(*sorted);
 	// printf("pivot: %d\n", tmp->nb);
 	free(sorted);
@@ -78,14 +78,15 @@ void	quicksort_a(t_stack **stack_a, t_stack **stack_b, int total)
 	old_total = total;
 	counter = 0;
 	tmp = *stack_a;
-	pivot = find_pivot(*stack_a);
 	if (check_a(*stack_a, total) == 1)
 		return ;
-	while (i < total)
+	pivot = find_pivot(*stack_a);
+	printf("pivot: %d\n", pivot);
+	while (total - 1 > i)
 	{
-		printf("%d, %d\n", tmp->nb, pivot);
-		break ;
-		if (tmp->nb < pivot)
+		// printf("%d, %d\n", tmp->nb, pivot);
+		// break ;
+		if ((*stack_a)->nb < pivot)
 		{
 			pb(stack_a, stack_b);
 			counter++;
@@ -94,8 +95,11 @@ void	quicksort_a(t_stack **stack_a, t_stack **stack_b, int total)
 			ra(stack_a);
 		i++;
 	}
-	// quicksort_a(stack_a, stack_b, total - counter);
-	// quicksort_b(stack_b, stack_a, total);
+	// while (total > i - counter && )
+	// printf("stack b:\n");
+	// print_stack(*stack_b);
+	quicksort_a(stack_a, stack_b, total - counter);
+	quicksort_b(stack_b, stack_a, total);
 }
 
 void	quicksort_b(t_stack **stack_a, t_stack **stack_b, int total)
@@ -110,18 +114,19 @@ void	quicksort_b(t_stack **stack_a, t_stack **stack_b, int total)
 	old_total = total;
 	counter = 0;
 	tmp = *stack_b;
-	pivot = find_pivot(*stack_b);
 	if (check_b(*stack_a, total) == 1)
 		return ;
-	while (i < total)
+	pivot = find_pivot(*stack_b);
+	while (i < total - 1)
 	{
-		if (tmp->nb < pivot)
+		if ((*stack_b)->nb < pivot)
 		{
 			pa(stack_b, stack_a);
 			counter++;
 		}
 		else
 			rb(stack_b);
+		i++;
 	}
 	quicksort_a(stack_a, stack_b, total);
 	quicksort_b(stack_b, stack_a, total - counter);

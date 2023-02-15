@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:21:38 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/14 16:33:58 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/15 17:32:23 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 int	check_a(t_stack *stack_a, int total)
 {
-	if (!swap_a(stack_a, total))
-		return (0);
-	if (!sorted_a(stack_a, total))
-		return (0);
-	return (1);
+	if (swap_a(stack_a, total))
+		return (1);
+	if (sorted_a(stack_a, total))
+		return (1);
+	sort_a_three(stack_a);
+	return (0);
 }
 
 int	swap_a(t_stack *stack_a, int total)

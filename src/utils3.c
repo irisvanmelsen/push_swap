@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:43:23 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/14 16:34:14 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/15 15:51:36 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	check_b(t_stack *stack_b, int total)
 		return (0);
 	if (!sorted_a(stack_b, total))
 		return (0);
+	sort_b_three(stack_b);
 	return (1);
 }
 
