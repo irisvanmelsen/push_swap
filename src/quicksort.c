@@ -6,39 +6,44 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 13:57:00 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/15 17:29:45 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/16 14:30:54 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	find_pivot(t_stack *stack)
+int	find_pivot(t_stack *stack, int total)
 {
 	t_stack	**sorted;
 	t_stack	*tmp;
 	int		pivot;
+	int		i;
 
 	tmp = stack;
 	sorted = malloc(sizeof(t_stack *));
 	*sorted = NULL;
+	i = 0;
 	if (!sorted)
+	{
 		error_message();
-	while (tmp)
+	}
+	while (tmp && i <= total)
 	{
 		add_to_end(sorted, create_node(stack->nb));
 		stack = stack->next;
 		if (tmp == stack)
 			break ;
+		i++;
 	}
-	printf("check stack:\n");
-	print_stack(stack);
+	// printf("check stack:\n");
+	// print_stack(stack);
 	bubblesort(stack, *sorted);
 	// printf("after bubblesort stack:\n");
 	// print_stack(stack);
 	// printf("after bubblesort sorted:\n");
 	// print_stack(*sorted);
-	// printf("after bubblesort index:\n");
-	// print_index(stack);
+	// // printf("after bubblesort index:\n");
+	// // print_index(stack);
 	pivot = find_middle(*sorted);
 	// printf("pivot: %d\n", tmp->nb);
 	free(sorted);
@@ -80,8 +85,9 @@ void	quicksort_a(t_stack **stack_a, t_stack **stack_b, int total)
 	tmp = *stack_a;
 	if (check_a(*stack_a, total) == 1)
 		return ;
-	pivot = find_pivot(*stack_a);
+	pivot = find_pivot(*stack_a, total);
 	printf("pivot: %d\n", pivot);
+	printf("total: %d\n", total);
 	while (total - 1 > i)
 	{
 		// printf("%d, %d\n", tmp->nb, pivot);
@@ -116,7 +122,7 @@ void	quicksort_b(t_stack **stack_a, t_stack **stack_b, int total)
 	tmp = *stack_b;
 	if (check_b(*stack_a, total) == 1)
 		return ;
-	pivot = find_pivot(*stack_b);
+	pivot = find_pivot(*stack_b, total);
 	while (i < total - 1)
 	{
 		if ((*stack_b)->nb < pivot)

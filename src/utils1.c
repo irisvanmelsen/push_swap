@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:50:52 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/14 17:54:57 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:15:33 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	bs_sort(t_stack *tmp, int *swap, t_stack *stack)
 		if (tmp->nb == tmp->next->nb && error == 0)
 		{
 			write(2, "Error\n", 6);
+			printf("cheese");
 			error = 1;
 			exit(0);
 		}
@@ -107,17 +108,20 @@ void	bs_swap(t_stack *stack1, t_stack *stack2)
 void	print_stack(t_stack *stack)
 {
 	t_stack	*start;
+	t_stack	*end;
 
 	if (!stack)
 		return ;
 	start = stack;
-	while (stack)
+	end = stack->prev;
+	while (start != end)
 	{
 		printf("output: %d\n", stack->nb);
 		stack = stack->next;
-		if (stack == start)
+		if (stack == end)
 			break ;
 	}
+	printf("output: %d\n", stack->nb);
 }
 
 // test function which prints the index

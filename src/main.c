@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 17:31:00 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/13 16:48:11 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:23:28 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,28 @@ int	main (int argc, char **argv)
 		error_message();
 		return (0);
 	}
-	printf("real stack:\n");
+	printf("stack_a before push:\n");
 	print_stack(stack_a);
-	quicksort_a(&stack_a, &stack_b, argc);
+	printf("------------------\n");
+	printf("stack_b before push:\n");
+	print_stack(stack_b);
+	printf("------------------\n");
+	pb(&stack_a, &stack_b);
+	pb(&stack_a, &stack_b);
+	pb(&stack_a, &stack_b);
+	pb(&stack_a, &stack_b);
+	pb(&stack_a, &stack_b);
+	printf("------------------\n");
+	printf("stack_a after push:\n");
+	print_stack(stack_a);
+	printf("------------------\n");
+	printf("stack_b after push:\n");
+	print_stack(stack_b);
+	printf("------------------\n");
+	// printf("------------------\n");
+	// print_stack(stack_b);
+	// quicksort_a(&stack_a, &stack_b, argc - 1);
+	// printf("test1\n");
+	// print_stack(stack_a);
 	return (EXIT_SUCCESS);
 }
