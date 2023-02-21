@@ -6,7 +6,7 @@
 #    By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/03 13:51:13 by ivan-mel          #+#    #+#              #
-#    Updated: 2023/02/15 17:27:45 by ivan-mel         ###   ########.fr        #
+#    Updated: 2023/02/21 11:27:24 by ivan-mel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ HEADER		:=	-I libft
 HEADERS		:=	libft/libft.h
 #UTILS
 RM 			:=	rm -rf
-FLAGS 		:=	-Wall -Werror -Wextra
+FLAGS 		:=	-Wall -Werror -Wextra -fsanitize=address -g
 SRC			:=	parser.c \
 				main.c \
 				list.c \

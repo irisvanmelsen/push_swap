@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 12:51:22 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/16 14:26:16 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/21 17:38:35 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ void	print_index(t_stack *stack);
 void	stack_sorted_same(t_stack *stack, t_stack *sorted, int i);
 void	sort_a_three(t_stack *stack);
 void	sort_b_three(t_stack *stack);
+void	push_a(t_stack *stack_a, t_stack *stack_b, int total);
 
 #endif

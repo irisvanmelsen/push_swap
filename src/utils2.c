@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:21:38 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/16 14:17:16 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/21 15:11:47 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	check_a(t_stack *stack_a, int total)
 
 int	swap_a(t_stack *stack_a, int total)
 {
-	if (total <= 2)
+	if (total <= 3)
 	{
 		if (stack_a->nb > stack_a->next->nb)
 			sa(&stack_a);
@@ -45,7 +45,7 @@ int	sorted_a(t_stack *stack_a, int total)
 		return (1);
 	while (total > i)
 	{
-		if (stack_a->nb < stack_a->next->nb)
+		if (stack_a->nb > stack_a->next->nb)
 			return (0);
 		stack_a = stack_a->next;
 		i++;

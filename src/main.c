@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 17:31:00 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/16 16:23:28 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/21 17:17:57 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,36 @@ int	main (int argc, char **argv)
 		error_message();
 		return (0);
 	}
-	printf("stack_a before push:\n");
-	print_stack(stack_a);
-	printf("------------------\n");
-	printf("stack_b before push:\n");
-	print_stack(stack_b);
-	printf("------------------\n");
-	pb(&stack_a, &stack_b);
-	pb(&stack_a, &stack_b);
-	pb(&stack_a, &stack_b);
-	pb(&stack_a, &stack_b);
-	pb(&stack_a, &stack_b);
-	printf("------------------\n");
-	printf("stack_a after push:\n");
-	print_stack(stack_a);
-	printf("------------------\n");
-	printf("stack_b after push:\n");
-	print_stack(stack_b);
-	printf("------------------\n");
-	// printf("------------------\n");
-	// print_stack(stack_b);
-	// quicksort_a(&stack_a, &stack_b, argc - 1);
-	// printf("test1\n");
+	// printf("stack_a before push:\n");
 	// print_stack(stack_a);
+	// printf("------------------\n");
+	// printf("stack_b before push:\n");
+	// print_stack(stack_b);
+	// printf("------------------\n");
+	// printf("stack_a after push:\n");
+	// print_stack(stack_a);
+	// printf("------------------\n");
+	// printf("stack_b after push:\n");
+	// print_stack(stack_b);
+	// printf("------------------\n");
+	printf("------------------\n");
+	print_stack(stack_b);
+	quicksort_a(&stack_a, &stack_b, argc - 1);
+	printf("test1\n");
+	print_stack(stack_a);
 	return (EXIT_SUCCESS);
 }
+
+// int	main()
+// {
+// 	t_stack *stack_c;
+// 	int total;
+
+// 	total = 3;
+// 	stack_c = NULL;
+// 	add_to_end(&stack_c, create_node(3));
+// 	add_to_end(&stack_c, create_node(2));
+// 	add_to_end(&stack_c, create_node(1));
+// 	print_stack(stack_c);
+// 	sort_a_three(stack_c);
+// }

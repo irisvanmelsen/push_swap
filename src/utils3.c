@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:43:23 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/16 14:17:13 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/21 15:12:00 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_b(t_stack *stack_b, int total)
 
 int	swap_b(t_stack *stack_b, int total)
 {
-	if (total <= 2)
+	if (total <= 3)
 	{
 		if (stack_b->nb < stack_b->next->nb)
 			sb(&stack_b);
