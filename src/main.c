@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 17:31:00 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/21 17:17:57 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/28 18:03:58 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,9 @@ int	main (int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	int		total;
 
 	stack_a = NULL;
 	stack_b = NULL;
-	total = argc;
 	if (argc < 2)
 	{
 		error_message();
@@ -52,7 +50,7 @@ int	main (int argc, char **argv)
 	printf("------------------\n");
 	print_stack(stack_b);
 	quicksort_a(&stack_a, &stack_b, argc - 1);
-	printf("test1\n");
+	printf("test main\n");
 	print_stack(stack_a);
 	return (EXIT_SUCCESS);
 }

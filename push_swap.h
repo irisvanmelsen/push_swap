@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 12:51:22 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/21 17:38:35 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/28 15:12:21 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_stack
 {
 	int				nb;
 	int				index;
+	int				sort;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;

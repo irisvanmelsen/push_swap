@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:51:44 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/21 17:17:43 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/02/28 18:14:59 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	sort_a_three(t_stack *stack)
 {
+	printf("test sort three\n");
 	if (stack->nb > stack->next->nb
 		&& stack->next->nb > stack->next->next->nb)
 	{
