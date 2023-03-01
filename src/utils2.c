@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:21:38 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/28 18:59:24 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/01 17:52:17 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,12 @@ int	check_a(t_stack *stack_a, int total)
 	if (sorted_a(stack_a, total) == 1)
 		return (1);
 	printf("test check_a\n");
-	if (total > 2)
+	if (stack_a->elements > 3)
 		return (0);
 	sort_a_three(stack_a);
+	printf("stack after sort three:\n");
+	print_stack(stack_a);
+	printf("address stack check a: %p\n", stack_a);
 	return (1);
 }
 

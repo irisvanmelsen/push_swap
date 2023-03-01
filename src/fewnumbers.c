@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:51:44 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/28 18:14:59 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/01 17:51:03 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,14 @@ void	sort_a_three(t_stack *stack)
 		&& stack->next->nb > stack->next->next->nb)
 	{
 		sa(&stack);
+		print_stack(stack);
+		printf("------------------\n");
 		rra(&stack);
+		printf("address stack1: %p\n", &stack);
+		print_stack(stack);
+		printf("address stack1: %p\n", &stack);
+		print_stack(stack);
+		printf("------------------\n");
 	}
 	else if (stack->nb - 1 > stack->next->nb
 		&& stack->next->nb < stack->next->next->nb)

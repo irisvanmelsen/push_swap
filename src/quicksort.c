@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 13:57:00 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/28 18:03:38 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/01 17:52:12 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,14 +105,10 @@ void	quicksort_a(t_stack **stack_a, t_stack **stack_b, int total)
 			printf("stack a in quicksort a before rotate:\n");
 			print_stack(*stack_a);
 			printf("------------------\n");
-			printf("stack b in quicksort a before rotate:\n");
-			print_stack(*stack_b);
 			ra(stack_a);
 			printf("stack a in quicksort a after rotate:\n");
 			print_stack(*stack_a);
 			printf("------------------\n");
-			printf("stack b in quicksort a after rotate:\n");
-			print_stack(*stack_b);
 		}
 		printf("i: %d\n total: %d\n", i, total);
 		i++;
@@ -122,8 +118,7 @@ void	quicksort_a(t_stack **stack_a, t_stack **stack_b, int total)
 		rra(stack_a);
 		i++;
 	}
-	if ((*stack_a)->sort != 1)
-		quicksort_a(stack_a, stack_b, old_total - counter);
+	quicksort_a(stack_a, stack_b, old_total - counter);
 	printf("stack a before quicksort b:\n");
 	print_stack(*stack_a);
 	(*stack_a)->sort = 1;
@@ -142,7 +137,7 @@ void	quicksort_b(t_stack **stack_a, t_stack **stack_b, int total)
 	old_total = total;
 	counter = 0;
 	tmp = *stack_b;
-	if (check_b(*stack_a, total) == 1)
+	if (check_b(*stack_b, total) == 1)
 		return (push_a(*stack_a, *stack_b, total));
 	pivot = find_pivot(*stack_b, total);
 	while (i < total)
@@ -155,27 +150,25 @@ void	quicksort_b(t_stack **stack_a, t_stack **stack_b, int total)
 			printf("stack b in quicksort b before push:\n");
 			print_stack(*stack_b);
 			printf("------------------\n");
-			pa(stack_b, stack_a);
+			pa(stack_a, stack_b);
 			printf("stack a in quicksort b after push:\n");
 			print_stack(*stack_a);
 			printf("------------------\n");
 			printf("stack b in quicksort b after push:\n");
 			print_stack(*stack_b);
+			printf("------------------\n");
 			counter++;
 		}
 		else
 		{
-			printf("stack a in quicksort b before rotate:\n");
-			print_stack(*stack_a);
-			printf("------------------\n");
 			printf("stack b in quicksort b before rotate:\n");
 			print_stack(*stack_b);
+			printf("------------------\n");
 			rb(stack_b);
-			printf("stack a in quicksort b after rotate:\n");
-			print_stack(*stack_a);
 			printf("------------------\n");
 			printf("stack b in quicksort b after rotate:\n");
 			print_stack(*stack_b);
+			printf("------------------\n");
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 21:28:33 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/28 19:06:03 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:00:04 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	push_a(t_stack *stack_a, t_stack *stack_b, int total)
 	i = 0;
 	while (i < total)
 	{
-		pa(&stack_b, &stack_a);
+		pa(&stack_a, &stack_b);
 		i++;
 	}
 }

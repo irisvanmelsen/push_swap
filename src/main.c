@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 17:31:00 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/28 18:03:58 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/01 17:52:45 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,20 @@ int	main (int argc, char **argv)
 		error_message();
 		return (0);
 	}
-	// printf("stack_a before push:\n");
+	// printf("stack a in quicksort a before rotate:\n");
 	// print_stack(stack_a);
 	// printf("------------------\n");
-	// printf("stack_b before push:\n");
-	// print_stack(stack_b);
-	// printf("------------------\n");
-	// printf("stack_a after push:\n");
+	// sa(&stack_a);
+	// rra(&stack_a);
+	// printf("stack a in quicksort a after rotate:\n");
 	// print_stack(stack_a);
 	// printf("------------------\n");
-	// printf("stack_b after push:\n");
-	// print_stack(stack_b);
-	// printf("------------------\n");
-	printf("------------------\n");
-	print_stack(stack_b);
+	printf("stack_a: %p, stack_b: %p\n", stack_a, stack_b);
+	stack_a->elements = argc - 1;
+	// stack_b->elements = 0;
 	quicksort_a(&stack_a, &stack_b, argc - 1);
-	printf("test main\n");
 	print_stack(stack_a);
+	printf("addresss stack_a: %p\n", stack_a);
 	return (EXIT_SUCCESS);
 }
 

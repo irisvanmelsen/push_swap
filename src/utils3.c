@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:43:23 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/21 15:12:00 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:28:28 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	check_b(t_stack *stack_b, int total)
 {
-	if (swap_a(stack_b, total))
+	if (swap_b(stack_b, total))
 		return (1);
-	if (sorted_a(stack_b, total))
+	if (sorted_b(stack_b, total))
 		return (1);
-	if (total != 3)
+	if (stack_b->elements > 3)
 		return (0);
 	sort_b_three(stack_b);
 	return (1);

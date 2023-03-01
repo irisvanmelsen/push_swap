@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:39:29 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/28 14:53:48 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:23:38 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_stack	*create_node(int nb)
 		return (NULL);
 	node->index = 0;
 	node->sort = 0;
+	node->elements = 0;
 	node->nb = nb;
 	node->next = NULL;
 	node->prev = NULL;

@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 13:12:50 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/02/06 14:19:53 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:26:51 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 void	pa(t_stack **stack_a, t_stack **stack_b)
 {
 	push(stack_b, stack_a);
+	(*stack_a)->elements++;
+	(*stack_b)->elements--;
 	write(1, "pa\n", 3);
 }
 
 void	pb(t_stack **stack_a, t_stack **stack_b)
 {
 	push(stack_a, stack_b);
+	(*stack_a)->elements--;
+	(*stack_b)->elements++;
 	write(1, "pb\n", 3);
 }
 
