@@ -1,52 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils3.c                                           :+:      :+:    :+:   */
+/*   sorting_a.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 12:43:23 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/01 13:28:28 by ivan-mel         ###   ########.fr       */
+/*   Created: 2023/03/03 17:40:18 by ivan-mel          #+#    #+#             */
+/*   Updated: 2023/03/03 18:02:32 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	check_b(t_stack *stack_b, int total)
+int	check_a(t_stack *stack_a, int total)
 {
-	if (swap_b(stack_b, total))
+	if (sorted_or_swap_a(stack_a, total) == 1)
 		return (1);
-	if (sorted_b(stack_b, total))
+	if (sorted_a(stack_a, total) == 1)
 		return (1);
-	if (stack_b->elements > 3)
+	if (stack_a->elements > 3)
 		return (0);
-	sort_b_three(stack_b);
+	sort_a_three(stack_a);
 	return (1);
 }
 
-int	swap_b(t_stack *stack_b, int total)
+int	sorted_or_swap_a(t_stack *stack_a, int total)
 {
-	if (total <= 3)
+	if (total < 3)
 	{
-		if (stack_b->nb < stack_b->next->nb)
-			sb(&stack_b);
+		if (stack_a->nb > stack_a->next->nb)
+			swap_a(&stack_a);
 		return (1);
 	}
 	return (0);
 }
 
-int	sorted_b(t_stack *stack_b, int total)
+int	sorted_a(t_stack *stack_a, int total)
 {
 	int	i;
 
-	i = 1;
-	if (total == 1)
+	i = 0;
+	if (total <= 1)
 		return (1);
 	while (total > i)
 	{
-		if (stack_b->nb > stack_b->next->nb)
+		if (stack_a->nb < stack_a->next->nb)
 			return (0);
-		stack_b = stack_b->next;
+		stack_a = stack_a->next;
 		i++;
 	}
 	return (1);

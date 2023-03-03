@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils1.c                                           :+:      :+:    :+:   */
+/*   bubblesort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:50:52 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/01 17:52:44 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/03 17:22:04 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,43 +101,4 @@ void	bs_swap(t_stack *stack1, t_stack *stack2)
 	tmp = stack1->nb;
 	stack1->nb = stack2->nb;
 	stack2->nb = tmp;
-}
-
-// test function which prints the stack
-
-void	print_stack(t_stack *stack)
-{
-	t_stack	*start;
-	t_stack	*end;
-
-	if (!stack)
-		return ;
-	start = stack;
-	end = stack->prev;
-	while (start != end)
-	{
-		printf("output: %d\n", stack->nb);
-		stack = stack->next;
-		if (stack == end)
-			break ;
-	}
-	printf("output: %d\n", stack->nb);
-}
-
-// test function which prints the index
-
-void	print_index(t_stack *stack)
-{
-	t_stack	*start;
-
-	if (!stack)
-		return ;
-	start = stack;
-	while (stack)
-	{
-		printf("index: %d\n", stack->index);
-		stack = stack->next;
-		if (stack == start)
-			break ;
-	}
 }

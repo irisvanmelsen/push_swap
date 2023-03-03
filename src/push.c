@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 21:28:33 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/01 14:00:04 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/03 18:21:07 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,44 +17,45 @@
 
 #include "../push_swap.h"
 
-void push(t_stack **stack1, t_stack **stack2)
+void push(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *tmp;
 	t_stack *last;
 	t_stack *head;
 
-	head = (*stack1);
-	tmp = (*stack1)->next;
-	last = (*stack1)->prev;
-	if (!*stack1)
+	printf("push function:\n");
+	print_stacks(*stack_a, *stack_b);
+	printf("A:%p\nB:%p", stack_a, stack_b);
+	head = (*stack_a);
+	tmp = (*stack_a)->next;
+	last = (*stack_a)->prev;
+	if (!*stack_a)
 		return ;
 	if (last->next == last)
-		*stack1 = NULL;
-	// printf("leftover nodes:%d\n", tmp->nb);
+	{
+		(*stack_a) = NULL;
+	}
 	else
 	{
 		tmp->prev = last;
 		last->next = tmp;
-		*stack1 = tmp;
+		*stack_a = tmp;
 	}
-	// *stack1 = tmp->next;
-	// (*stack1)->prev = tmp->prev;
-	// printf("stack %d, stack->next %d start %d\n", tmp->prev->prev->prev, *stack1, NULL);
-	// tmp->prev = *stack1;
-	if (!*stack2)
+	if (!*stack_b)
 	{
 		head->next = head;
 		head->prev = head;
+		(*stack_b)->elements = 0;
 	}
 	else
 	{
-		// printf("*stack1=%d\ntemp=%d\ntemp->n=%d\ntemp->p=%d\n", (*stack1)->nb, tmp->nb, tmp->next->nb, tmp->prev->nb);
-		head->next = *stack2;
-		head->prev = (*stack2)->prev;
+		head->next = *stack_b;
+		head->prev = (*stack_b)->prev;
 		head->next->prev = head;
 		head->prev->next = head;
 	}
-	*stack2 = head;
+	*stack_b = head;
+		printf("\nthis is my test line\n\n");
 }
 
 void	push_a(t_stack *stack_a, t_stack *stack_b, int total)
@@ -64,7 +65,7 @@ void	push_a(t_stack *stack_a, t_stack *stack_b, int total)
 	i = 0;
 	while (i < total)
 	{
-		pa(&stack_a, &stack_b);
+		push_b_to_a(&stack_a, &stack_b);
 		i++;
 	}
 }

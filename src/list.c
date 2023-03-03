@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:39:29 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/01 13:23:38 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/03 18:16:52 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,35 @@ void	add_to_end(t_stack **lst, t_stack *new)
 		new->next = *lst;
 		(*lst)->prev = new;
 	}
+}
+
+size_t	list_size(t_stack *stack)
+{
+	size_t	size;
+	t_stack	*home;
+
+	if (!stack)
+		return (0);
+	size = 1;
+	home = stack;
+	stack = stack->next;
+	while (stack != home)
+	{
+		stack = stack->next;
+		size++;
+	}
+	return (size);
+}
+
+t_stack *list_add_node_front(t_stack *node, t_stack stack)
+{
+	(void) stack;
+	(void) node;
+	return (NULL);
+}
+
+t_stack *list_take_node(t_stack stack)
+{
+	(void) stack;
+	return (NULL);
 }

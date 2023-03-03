@@ -6,7 +6,7 @@
 #    By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/03 13:51:13 by ivan-mel          #+#    #+#              #
-#    Updated: 2023/02/28 19:08:06 by ivan-mel         ###   ########.fr        #
+#    Updated: 2023/03/03 17:55:54 by ivan-mel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,14 +23,17 @@ SRC			:=	parser.c \
 				push.c \
 				rotate.c \
 				swap.c \
-				operations1.c \
-				operations2.c \
-				operations3.c \
-				utils1.c \
-				utils2.c \
-				utils3.c \
+				operations_push_swap.c \
+				operations_rotate.c \
+				operations_rev_rotate.c \
+				bubblesort.c \
+				bubblesort_utils.c \
+				sorting_a.c \
+				sorting_b.c \
 				quicksort.c \
-				fewnumbers.c \
+				few_numbers.c \
+				print_functions.c \
+				error.c \
 #SRCB		=	
 #OBJB_FILES	=	${SRCB:.c=.o}
 OBJ_DIR		:=	./obj
