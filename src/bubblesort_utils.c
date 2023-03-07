@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:30:58 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/03 17:34:49 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:11:25 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,7 @@ int	find_pivot(t_stack *stack, int total)
 	*sorted = NULL;
 	i = 0;
 	if (!sorted)
-	{
 		error_message();
-	}
 	while (tmp && i <= total)
 	{
 		add_to_end(sorted, create_node(stack->nb));

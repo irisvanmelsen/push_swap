@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 21:28:33 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/03 18:21:07 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/07 12:33:37 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,21 @@
 
 void push(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack *tmp;
-	t_stack *last;
-	t_stack *head;
+	t_stack	*tmp;
+	t_stack	*last;
+	t_stack	*head;
 
-	printf("push function:\n");
-	print_stacks(*stack_a, *stack_b);
-	printf("A:%p\nB:%p", stack_a, stack_b);
+	// printf("push function:\n");
+	// print_stacks(*stack_a, *stack_b);
+	// printf("A:%p\nB:%p", stack_a, stack_b);
 	head = (*stack_a);
 	tmp = (*stack_a)->next;
 	last = (*stack_a)->prev;
-	if (!*stack_a)
-		return ;
 	if (last->next == last)
 	{
+		printf("test\n");
 		(*stack_a) = NULL;
+		return ;
 	}
 	else
 	{
@@ -45,7 +45,8 @@ void push(t_stack **stack_a, t_stack **stack_b)
 	{
 		head->next = head;
 		head->prev = head;
-		(*stack_b)->elements = 0;
+		*stack_b = malloc(sizeof(t_stack));
+		(*stack_b)->index = 0;
 	}
 	else
 	{
@@ -55,7 +56,6 @@ void push(t_stack **stack_a, t_stack **stack_b)
 		head->prev->next = head;
 	}
 	*stack_b = head;
-		printf("\nthis is my test line\n\n");
 }
 
 void	push_a(t_stack *stack_a, t_stack *stack_b, int total)

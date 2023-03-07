@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 12:51:22 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/03 17:53:26 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:44:50 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_stack
 	int				nb;
 	int				index;
 	int				sort;
-	int				elements;
+	// int				elements;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
@@ -33,7 +33,6 @@ typedef struct s_stack
 //
 // ------------------------parser--------------------------------------
 int		digit_checker(char *str, int *nb);
-char	*ps_checker(t_stack *lst, char **argv);
 int		parse_args(char **argv, t_stack **stack_a);
 int		ft_atoi_overflow(char *str, int *nb);
 // ------------------------LIST----------------------------------------
@@ -91,6 +90,7 @@ int		find_middle(t_stack *stack);
 void	print_stacks(t_stack *stack_a, t_stack *stack_b);
 void	print_stack(t_stack *a);
 void	print_index(t_stack *stack);
+int		stack_length(t_stack *stack);
 // --------------------------QUICKSORT--------------------------------
 //
 // ---------------------quicksort functions---------------------------

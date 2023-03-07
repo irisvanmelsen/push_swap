@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:18:09 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/03 18:17:18 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:37:33 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,11 @@ void	print_stack(t_stack *stack)
 	end = stack->prev;
 	while (start != end)
 	{
-		printf("output: %d\n", stack->nb);
-		stack = stack->next;
+		// printf("output: %d\n", stack->nb);
+		// printf("stack-nb %d | stack->index %d\n", stack->nb, stack->index);
 		if (stack == end)
 			break ;
+		stack = stack->next;
 	}
 	printf("output: %d\n", stack->nb);
 }
@@ -91,4 +92,19 @@ void	print_index(t_stack *stack)
 		if (stack == start)
 			break ;
 	}
+}
+
+int	stack_length(t_stack *stack)
+{
+	int	i;
+	t_stack	*start;
+
+	i = 0;
+	start = stack;
+	while (stack->next != start)
+	{
+		stack = stack->next;
+		i++;
+	}
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:50:52 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/03 17:22:04 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:27:34 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	stack_sorted_same(t_stack *stack, t_stack *sorted, int i)
 		stack = stack->next;
 	}
 	stack->index = i;
+	// printf("stack->index (bs): %d | storted->nb %d\n", stack->index, sorted->nb);
 }
 
 void	bubblesort(t_stack *stack, t_stack *sorted)
@@ -31,7 +32,7 @@ void	bubblesort(t_stack *stack, t_stack *sorted)
 	int		swap;
 	int		i;
 
-	i = INT_MIN;
+	i = 0;
 	tmp = sorted;
 	if (!tmp)
 		return ;
