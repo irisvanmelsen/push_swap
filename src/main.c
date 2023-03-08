@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 17:31:00 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/07 14:28:04 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/08 18:15:02 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,29 @@
 
 int	main (int argc, char **argv)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	t_stack stack;
 
-	stack_a = NULL;
-	stack_b = NULL;
+	// stack = malloc(sizeof(t_stack));
+	// stack->stack_a = ft_calloc(1, sizeof(t_node));
+	// stack->stack_b = ft_calloc(1, sizeof(t_node));
+	stack.stack_a = NULL;
+	stack.stack_b = NULL;
 	if (argc < 2)
 	{
 		error_message();
 		return (0);
 	}
-	if (!parse_args(argv, &stack_a))
+	if (!parse_args(argv, argc, &stack))
 	{
 		error_message();
 		return (0);
 	}
 	// printf("stack_a: %p, stack_b: %p\n", stack_a, stack_b);
-	quicksort_a(&stack_a, &stack_b, argc - 1);
-	print_stacks(stack_a, stack_b);
+	stack.elements_a = argc - 1;
+	stack.sort = 0;
+	stack.elements_b = 0;
+	quicksort_a(&stack, argc - 1);
+	print_stacks(&stack);
 	return (EXIT_SUCCESS);
 }
 

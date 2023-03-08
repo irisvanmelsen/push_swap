@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 18:32:31 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/05 15:11:18 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/08 11:32:01 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@
 // Shift up all elements of stack b by 1.
 // The first element becomes the last one.
 
-void	rotate(t_stack **stack)
+void	rotate(t_node *stack)
 {
 	if (!stack)
 		return ;
-	*stack = (*stack)->next;
+	stack = stack->next;
 }
 
 //  ra and rb at the same time
 
-void	rotate_rr(t_stack **stack_a, t_stack **stack_b)
+void	rotate_rr(t_node *stack)
 {
-	rotate(stack_a);
-	rotate(stack_b);
+	rotate(stack);
+	rotate(stack);
 }
 
 // Shift down all elements of stack a by 1.
@@ -37,16 +37,16 @@ void	rotate_rr(t_stack **stack_a, t_stack **stack_b)
 // Shift down all elements of stack b by 1.
 // The last element becomes the first one.
 
-void	rev_rotate(t_stack **stack)
+void	rev_rotate(t_node *stack)
 {
 	if (!stack)
 		return ;
-	*stack = (*stack)->prev;
+	stack = stack->prev;
 }
 // rra and rrb at the same time.
 
-void	rev_rotate_rr(t_stack **stack_a, t_stack **stack_b)
+void	rev_rotate_rr(t_node *stack)
 {
-	rev_rotate(stack_a);
-	rev_rotate(stack_b);
+	rev_rotate(stack);
+	rev_rotate(stack);
 }

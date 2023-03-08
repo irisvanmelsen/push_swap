@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:18:09 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/07 14:37:33 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/08 11:36:44 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 // test function which prints the stack
 
-void	print_stacks(t_stack *stack_a, t_stack *stack_b)
+void	print_stacks(t_stack *stack)
 {
 	size_t size_a;
 	size_t size_b;
 	size_t i;
 	size_t i_2;
 
-	size_a = list_size(stack_a);
-	size_b = list_size(stack_b);
+	size_a = list_size(stack->stack_a);
+	size_b = list_size(stack->stack_b);
 	i = (size_a > size_b ? size_a - size_b : size_b - size_a);
 	i_2 = (size_a > size_b ? size_a - i : size_b - i);
 	if (size_a == size_b)
@@ -33,22 +33,22 @@ void	print_stacks(t_stack *stack_a, t_stack *stack_b)
 	printf("\tA\tB\n");
 	while (i_2)
 	{
-		printf("\t%d\t%d\n" , stack_a->nb, stack_b->nb);
+		printf("\t%d\t%d\n" , stack->stack_a->nb, stack->stack_b->nb);
 		i_2--;
-		stack_a = stack_a->next;
-		stack_b = stack_b->next;
+		stack->stack_a = stack->stack_a->next;
+		stack->stack_b = stack->stack_b->next;
 	}
 	while (i && size_a > size_b)
 	{
-		printf("\t%d\n" , stack_a->nb);
+		printf("\t%d\n" , stack->stack_a->nb);
 		i--;
-		stack_a = stack_a->next;
+		stack->stack_a = stack->stack_a->next;
 	}
 	while (i && size_a < size_b)
 	{
-			printf("\t\t%d\n" , stack_b->nb);
+			printf("\t\t%d\n" , stack->stack_b->nb);
 			i--;
-			stack_b = stack_b->next;
+			stack->stack_b = stack->stack_b->next;
 
 	}
 	printf("\n\tEND PRINT FUNC\n");
@@ -56,10 +56,10 @@ void	print_stacks(t_stack *stack_a, t_stack *stack_b)
 
 // test function which prints the stack
 
-void	print_stack(t_stack *stack)
+void	print_stack(t_node *stack)
 {
-	t_stack	*start;
-	t_stack	*end;
+	t_node	*start;
+	t_node	*end;
 
 	if (!stack)
 		return ;
@@ -76,28 +76,28 @@ void	print_stack(t_stack *stack)
 	printf("output: %d\n", stack->nb);
 }
 
-// test function which prints the index
+// // test function which prints the index
 
-void	print_index(t_stack *stack)
-{
-	t_stack	*start;
+// void	print_index(t_stack *stack)
+// {
+// 	t_stack	*start;
 
-	if (!stack)
-		return ;
-	start = stack;
-	while (stack)
-	{
-		printf("index: %d\n", stack->index);
-		stack = stack->next;
-		if (stack == start)
-			break ;
-	}
-}
+// 	if (!stack)
+// 		return ;
+// 	start = stack;
+// 	while (stack)
+// 	{
+// 		printf("index: %d\n", stack->index);
+// 		stack = stack->next;
+// 		if (stack == start)
+// 			break ;
+// 	}
+// }
 
-int	stack_length(t_stack *stack)
+int	stack_length(t_node *stack)
 {
 	int	i;
-	t_stack	*start;
+	t_node	*start;
 
 	i = 0;
 	start = stack;

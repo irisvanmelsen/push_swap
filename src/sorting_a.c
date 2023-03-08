@@ -6,31 +6,31 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:40:18 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/07 14:30:05 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/08 16:11:13 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	check_a(t_stack *stack_a, int total)
+int	check_a(t_stack *stack, int total)
 {
-	if (sorted_or_swap_a(stack_a, total) == 1)
+	if (sorted_or_swap_a(stack, total) == 1)
 		return (1);
-	if (sorted_a(stack_a, total) == 1)
+	if (sorted_a(stack->stack_a, total) == 1)
 		return (1);
 	// printf("stack_a->index: %d\n", stack_a->index);
-	if (stack_a->index > 2)
+	if (stack->elements_a > 3)
 		return (0);
-	sort_a_three(stack_a);
+	sort_a_three(stack->stack_a);
 	return (1);
 }
 
-int	sorted_or_swap_a(t_stack *stack_a, int total)
+int	sorted_or_swap_a(t_stack *stack, int total)
 {
 	if (total <= 2)
 	{
-		if (stack_a->nb > stack_a->next->nb)
-			swap_a(&stack_a);
+		if (stack->stack_a->nb > stack->stack_a->next->nb)
+			swap_a(stack->stack_a);
 		return (1);
 	}
 	return (0);
@@ -41,7 +41,7 @@ int	sorted_or_swap_a(t_stack *stack_a, int total)
 // if element is greater than next ascending is set to 0
 // if it is in ascending order then ascending should be 1
 
-int	sorted_a(t_stack *stack_a, int total)
+int	sorted_a(t_node *stack_a, int total)
 {
 	int	i;
 	int	ascending;

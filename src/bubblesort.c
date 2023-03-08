@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:50:52 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/07 14:27:34 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/08 13:25:06 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,21 @@
 // int swap is a counter that keeps track of whether
 // a swap happened or not
 
-void	stack_sorted_same(t_stack *stack, t_stack *sorted, int i)
+void	stack_sorted_same(t_node *stack, t_node *sorted)
 {
 	while (stack->nb != sorted->nb)
 	{
 		stack = stack->next;
 	}
-	stack->index = i;
+
 	// printf("stack->index (bs): %d | storted->nb %d\n", stack->index, sorted->nb);
 }
+void	bubblesort(t_node *stack, t_node *sorted)
 
-void	bubblesort(t_stack *stack, t_stack *sorted)
 {
-	t_stack	*tmp;
+	t_node	*tmp;
 	int		swap;
-	int		i;
 
-	i = 0;
 	tmp = sorted;
 	if (!tmp)
 		return ;
@@ -42,15 +40,13 @@ void	bubblesort(t_stack *stack, t_stack *sorted)
 		swap = 0;
 		bs_sort(tmp, &swap, sorted);
 	}
-	stack_sorted_same(stack, sorted, i);
+	stack_sorted_same(stack, sorted);
 	sorted = sorted->next;
-	i++;
 	while (sorted != tmp)
 	{
-		stack_sorted_same(stack, sorted, i);
+		stack_sorted_same(stack, sorted);
 		// printf("%d\n", stack->index);
 		sorted = sorted->next;
-		i++;
 	}
 	return ;
 }
@@ -64,9 +60,9 @@ void	bubblesort(t_stack *stack, t_stack *sorted)
 // if there is only one number / node then tmp->next = stack
 // in this case last is updated to be equal to tmp	
 
-void	bs_sort(t_stack *tmp, int *swap, t_stack *stack)
+void	bs_sort(t_node *tmp, int *swap, t_node *stack)
 {
-	t_stack	*last;
+	t_node	*last;
 	int		error;
 
 	last = stack;
@@ -95,7 +91,7 @@ void	bs_sort(t_stack *tmp, int *swap, t_stack *stack)
 
 // uses a tmp to swap the value of stack1 and stack2
 
-void	bs_swap(t_stack *stack1, t_stack *stack2)
+void	bs_swap(t_node *stack1, t_node *stack2)
 {
 	int	tmp;
 

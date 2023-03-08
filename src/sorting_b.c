@@ -6,31 +6,30 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:43:23 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/07 14:30:14 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/08 16:15:07 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	check_b(t_stack *stack_b, int total)
+int	check_b(t_stack *stack, int total)
 {
-	printf("stack_b->index: %d\n", stack_b->index);
-	if (sorted_or_swap_b(stack_b, total))
+	if (sorted_or_swap_b(stack, total))
 		return (1);
-	if (sorted_b(stack_b, total))
+	if (sorted_b(stack, total))
 		return (1);
-	if (stack_b->index == 2)
+	if (stack->elements_b == 3)
 		return (0);
-	sort_b_three(stack_b);
+	sort_b_three(stack->stack_b);
 	return (0);
 }
 
-int	sorted_or_swap_b(t_stack *stack_b, int total)
+int	sorted_or_swap_b(t_stack *stack, int total)
 {
 	if (total <= 2)
 	{
-		if (stack_b->nb < stack_b->next->nb)
-			swap_b(&stack_b);
+		if (stack->stack_b->nb < stack->stack_b->next->nb)
+			swap_b(stack->stack_b);
 		return (1);
 	}
 	return (0);
@@ -41,7 +40,7 @@ int	sorted_or_swap_b(t_stack *stack_b, int total)
 // if element is smaller than next descending is set to 0
 // if it is in descending order then descending should be 1
 
-int	sorted_b(t_stack *stack_b, int total)
+int	sorted_b(t_stack *stack, int total)
 {
 	int	i;
 	int	descending;
@@ -52,9 +51,9 @@ int	sorted_b(t_stack *stack_b, int total)
 		return (1);
 	while (total > i + 1)
 	{
-		if (stack_b->nb < stack_b->next->nb)
+		if (stack->stack_b->nb < stack->stack_b->next->nb)
 			descending = 0;
-		stack_b = stack_b->next;
+		stack->stack_b = stack->stack_b->next;
 		i++;
 	}
 	if (descending)
