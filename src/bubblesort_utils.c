@@ -6,13 +6,13 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:30:58 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/08 16:05:27 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/10 18:15:47 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	find_pivot(t_node *stack, int total)
+int	find_pivot(t_node *stack, int push)
 {
 	t_node	**sorted;
 	t_node	*tmp;
@@ -22,12 +22,12 @@ int	find_pivot(t_node *stack, int total)
 
 	sort = 1;
 	tmp = stack;
-	sorted = malloc(sizeof(t_stack *));
-	*sorted = NULL;
 	i = 0;
+	sorted = malloc(sizeof(t_node *));
 	if (!sorted)
 		error_message();
-	while (tmp && i <= total)
+	*sorted = NULL;
+	while (tmp && i <= push)
 	{
 		add_to_end(sorted, create_node(stack->nb));
 		stack = stack->next;
@@ -35,7 +35,7 @@ int	find_pivot(t_node *stack, int total)
 			break ;
 		i++;
 	}
-	bubblesort(stack, *sorted);
+	bubblesort(*sorted);
 	pivot = find_middle(*sorted);
 	free(sorted);
 	return (pivot);

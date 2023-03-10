@@ -6,26 +6,26 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:50:52 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/08 13:25:06 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/10 18:29:58 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+
+// void	stack_sorted_same(t_node *stack, t_node *sorted)
+// {
+// 	while (stack->nb != sorted->nb)
+// 	{
+// 		stack = stack->next;
+// 	}
+// printf("stack->index (bs): %d | storted->nb %d\n", stack->index, sorted->nb);
+
 // tmp is a temporary of stack so it can be adjusted
 // int swap is a counter that keeps track of whether
 // a swap happened or not
 
-void	stack_sorted_same(t_node *stack, t_node *sorted)
-{
-	while (stack->nb != sorted->nb)
-	{
-		stack = stack->next;
-	}
-
-	// printf("stack->index (bs): %d | storted->nb %d\n", stack->index, sorted->nb);
-}
-void	bubblesort(t_node *stack, t_node *sorted)
+void	bubblesort(t_node *sorted)
 
 {
 	t_node	*tmp;
@@ -40,14 +40,14 @@ void	bubblesort(t_node *stack, t_node *sorted)
 		swap = 0;
 		bs_sort(tmp, &swap, sorted);
 	}
-	stack_sorted_same(stack, sorted);
-	sorted = sorted->next;
-	while (sorted != tmp)
-	{
-		stack_sorted_same(stack, sorted);
+	// stack_sorted_same(stack, sorted);
+	// sorted = sorted->next;
+	// while (sorted != tmp)
+	// {
+		// stack_sorted_same(stack, sorted);
 		// printf("%d\n", stack->index);
-		sorted = sorted->next;
-	}
+	// 	sorted = sorted->next;
+	// }
 	return ;
 }
 
@@ -63,19 +63,19 @@ void	bubblesort(t_node *stack, t_node *sorted)
 void	bs_sort(t_node *tmp, int *swap, t_node *stack)
 {
 	t_node	*last;
-	int		error;
+	// int		error;
 
 	last = stack;
-	error = 0;
+	// error = 0;
 	while (last->next != tmp)
 		last = last->next;
 	while (tmp != last)
 	{
-		if (tmp->nb == tmp->next->nb && error == 0)
+		// if (tmp->nb == tmp->next->nb && error == 0)
+		if (tmp->nb == tmp->next->nb)
 		{
 			write(2, "Error\n", 6);
-			printf("cheese");
-			error = 1;
+			// error = 1;
 			exit(0);
 		}
 		if (tmp->nb > tmp->next->nb)

@@ -6,28 +6,31 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:40:18 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/08 16:11:13 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/10 20:03:42 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	check_a(t_stack *stack, int total)
+int	check_a(t_stack *stack, int push)
 {
-	if (sorted_or_swap_a(stack, total) == 1)
+	if (sorted_or_swap_a(stack, push) == 1)
 		return (1);
-	if (sorted_a(stack->stack_a, total) == 1)
+	// printf("stack_a address: %p\n", stack->stack_a);
+	if (sorted_a(stack->stack_a, push) == 1)
+	{
+		printf("stack->elements_a %zu\n", stack->elements_a);
 		return (1);
-	// printf("stack_a->index: %d\n", stack_a->index);
+	}
 	if (stack->elements_a > 3)
 		return (0);
-	sort_a_three(stack->stack_a);
+	sort_a_three(&(stack->stack_a));
 	return (1);
 }
 
-int	sorted_or_swap_a(t_stack *stack, int total)
+int	sorted_or_swap_a(t_stack *stack, int push)
 {
-	if (total <= 2)
+	if (push <= 2)
 	{
 		if (stack->stack_a->nb > stack->stack_a->next->nb)
 			swap_a(stack->stack_a);
@@ -36,29 +39,19 @@ int	sorted_or_swap_a(t_stack *stack, int total)
 	return (0);
 }
 
-// i is used as a counter to iterate through the stack
-// ascending is a flag to keep track of whether the order is correct
-// if element is greater than next ascending is set to 0
-// if it is in ascending order then ascending should be 1
-
-int	sorted_a(t_node *stack_a, int total)
+int	sorted_a(t_node *stack_a, int push)
 {
 	int	i;
-	int	ascending;
 
-	i = 0;
-	ascending = 1;
-	if (total <= 1)
+	i = 1;
+	if (push <= 1)
 		return (1);
-	while (total > i + 1)
+	while (i < push)
 	{
-		if (stack_a->nb > stack_a->next->nb)
-			ascending = 0;
+		if (stack_a->nb - i < stack_a->next->nb - i + 1)
+			return (0);
 		stack_a = stack_a->next;
 		i++;
 	}
-	if (ascending)
-		return (1);
-	else
-		return (0);
+	return (1);
 }

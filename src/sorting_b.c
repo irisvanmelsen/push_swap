@@ -6,30 +6,33 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:43:23 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/08 16:15:07 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/10 20:19:56 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	check_b(t_stack *stack, int total)
+int	check_b(t_stack *stack, int push)
 {
-	if (sorted_or_swap_b(stack, total))
+	if (sorted_or_swap_b(stack, push))
 		return (1);
-	if (sorted_b(stack, total))
+	if (sorted_b(stack->stack_b, push))
 		return (1);
-	if (stack->elements_b == 3)
+	if (stack->elements_b > 3)
 		return (0);
-	sort_b_three(stack->stack_b);
+	sort_b_three(&(stack->stack_b));
 	return (0);
 }
 
-int	sorted_or_swap_b(t_stack *stack, int total)
+int	sorted_or_swap_b(t_stack *stack, int push)
 {
-	if (total <= 2)
+	if (push <= 2)
 	{
 		if (stack->stack_b->nb < stack->stack_b->next->nb)
+		{
+			printf("test sorted or swap\n");
 			swap_b(stack->stack_b);
+		}
 		return (1);
 	}
 	return (0);
@@ -40,24 +43,19 @@ int	sorted_or_swap_b(t_stack *stack, int total)
 // if element is smaller than next descending is set to 0
 // if it is in descending order then descending should be 1
 
-int	sorted_b(t_stack *stack, int total)
+int	sorted_b(t_node *stack_b, int push)
 {
 	int	i;
-	int	descending;
 
-	i = 0;
-	descending = 1;
-	if (total <= 1)
+	i = 1;
+	if (push == 1)
 		return (1);
-	while (total > i + 1)
+	while (i < push)
 	{
-		if (stack->stack_b->nb < stack->stack_b->next->nb)
-			descending = 0;
-		stack->stack_b = stack->stack_b->next;
+		if (stack_b->nb - i > stack_b->next->nb - i + 1)
+			return (0);
+		stack_b = stack_b->next;
 		i++;
 	}
-	if (descending)
-		return (1);
-	else
-		return (0);
+	return (1);
 }

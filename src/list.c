@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:39:29 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/08 15:56:13 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/10 18:39:13 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	add_to_end(t_node **lst, t_node *new)
 {
 	t_node	*tmp;
 
+	// if (!lst)
+	// 	return;
 	if (!*lst)
 	{
 		*lst = new;
@@ -41,10 +43,10 @@ void	add_to_end(t_node **lst, t_node *new)
 	else
 	{
 		tmp = *lst;
-	printf("tmp->nb: %d\n", tmp->nb);
+	// printf("tmp->nb: %d\n", tmp->nb);
 		while (tmp->next != *lst)
 		{
-			printf("tmp->nb: %d\n", tmp->nb);
+			// printf("tmp->nb: %d\n", tmp->nb);
 			tmp = tmp->next;
 		}
 		tmp->next = new;

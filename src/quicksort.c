@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 13:57:00 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/08 16:17:21 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/10 20:24:40 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,83 +16,108 @@
 // ra: shift up all elements of stack a by 1, the first element
 // becomes the last one.
 
-void	quicksort_a(t_stack *stack, int total)
+void	quicksort_a(t_stack *stack, int push)
 {
-	t_node	*tmp;
-	int		i;
-	int		pivot;
-	int		old_total;
-	int		counter;
+	int	pivot;
+	int	old_push;
+
+	old_push = push;
+	print_stacks(stack);
+	if (check_a(stack, push) == 1)
+	{
+		printf("test in check_a quicksort\n");
+		print_stacks(stack);
+		return ;
+	}
+	pivot = find_pivot(stack->stack_a, push);
+	push = push_b_till_pivot(stack, push, pivot);
+	quicksort_a(stack, old_push - push);
+	stack->sort = 1;
+	quicksort_b(stack, push);
+}
+
+int	push_b_till_pivot(t_stack *stack, int push, int pivot)
+{
+	int	i;
+	int	total_pushed;
 
 	i = 0;
-	old_total = total;
-	counter = 0;
-	tmp = stack->stack_a;
-	print_stack (stack->stack_a);
-	// (*stack_a)->index = stack_length(*stack_a);
-	if (check_a(stack, total) == 1)
-		return ;
-	pivot = find_pivot(stack->stack_a, total);
-	while (total > i)
+	total_pushed = 0;
+	printf("pivot stack_a: %d\n", find_pivot(stack->stack_a, push));
+	printf("stack_a->nb: %d\nstack_a->next: %d\nstack_a->prev: %d\n", stack->stack_a->nb, stack->stack_a->next->nb, stack->stack_a->prev->nb);
+	while (i < push)
 	{
 		if ((stack->stack_a)->nb < pivot)
 		{
 			push_a_to_b(stack);
-			counter++;
+			total_pushed++;
 		}
 		else
 			rotate_a(stack->stack_a);
 		i++;
 	}
-	printf("i: %d\ttotal: %d\tpivot: %d\n", i, total, pivot);
+	i = 0;
+	printf("stack->elements_a: %zu\n", stack->elements_a);
+	if (stack->elements_a <= 3)
+	{
+		sort_a_three(&(stack->stack_a));
+		return (total_pushed);
+	}
+	printf("stack->elements_a check 2: %zu\n", stack->elements_a);
+	printf("push: %d\n", push);
+	while (push - total_pushed > i && stack->sort == 1)
+	{
+		printf("push in loop: %d\n", push);
+		rev_rotate_a(&(stack->stack_a));
+		i++;
+	}
+	return (total_pushed);
+}
+
+void	quicksort_b(t_stack *stack, int push)
+{
+	printf("start quicksort b\n");
+	int	pivot;
+	int	old_push;
+
+	old_push = push;
+	if (check_b(stack, push) == 1)
+	{
+		printf("test in check_b quicksort\n");
+		push_b(stack, push);
+		return ;
+	}
+	pivot = find_pivot(stack->stack_b, push);
+	push = push_a_till_pivot(stack, push, pivot);
+	quicksort_a(stack, old_push - push);
+	quicksort_b(stack, old_push - push);
+}
+
+int	push_a_till_pivot(t_stack *stack, int push, int pivot)
+{
+	int	i;
+	int	total_pushed;
+
+	i = 0;
+	total_pushed = 0;
+	while (push < i)
+	{
+		if ((stack->stack_a)->nb > pivot)
+		{
+			push_b_to_a(stack);
+			total_pushed++;
+		}
+		else
+			rotate_b(stack->stack_a);
+		i++;
+	}
 	i = 0;
 	// if ((*stack_a)->elements < 3)
 	// 	return ;
-	while (total - counter > i && stack->sort == 1)
-	{
-		rev_rotate_a(stack->stack_a);
-		i++;
-	}
-	quicksort_a(stack, old_total - counter);
-	stack->sort = 1;
-	quicksort_b(stack, counter);
-}
-
-void	quicksort_b(t_stack *stack, int total)
-{
-	t_node	*tmp;
-	int		i;
-	int		pivot;
-	int		old_total;
-	int		counter;
-
-	i = 0;
-	old_total = total;
-	counter = 0;
-	tmp = stack->stack_b;
-	// printf("stack_b->index: %d\n", (*stack_b)->index);
-	if (check_b(stack, total) == 1)
-		return (push_a(stack, total));
-	pivot = find_pivot(stack->stack_b, total);
-	while (i < total)
-	{
-		if ((stack->stack_b)->nb >= pivot)
-		{
-			push_b_to_a(stack);
-			counter++;
-		}
-		else
-			rotate_b(stack->stack_b);
-		i++;
-	}
-	i = 0;
-	// if ((*stack_b)->elements < 3)
-	// 	return ;
-	while (total - counter > i && stack->sort == 1)
+	while (push - total_pushed > i && stack->sort == 1)
 	{
 		rev_rotate_b(stack->stack_b);
 		i++;
 	}
-	quicksort_a(stack, counter);
-	quicksort_b(stack, old_total - counter);
+	return (total_pushed);
 }

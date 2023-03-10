@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:28:56 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/08 20:53:09 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/10 18:40:00 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,41 +66,24 @@ int	ft_atoi_overflow(char *str, int *nb)
 	return (1);
 }
 
-int	parse_args(char **argv, int argc, t_stack *stack)
+int	parse_args(char **argv, t_stack *stack)
 {
 	char	**amount;
 	int		i;
 	int		nb;
-	// int		counter;
 
 	i = 1;
-	// counter = 0;
-	amount = argv;
-	amount = ft_split(argv[i], ' ');
-	while (argc )
 	while (argv[i])
 	{
-		if (!digit_checker(amount[i], &nb))
+		amount = ft_split(argv[1], ' ');
+		if (!digit_checker(argv[i], &nb))
+		{
+			free(amount);
 			return (0);
-		// printf("address stack->stack_a: %p\n", (&(stack->stack_a));
-		// printf("address &stack->stack_a: %d\n", *(stack->stack_a));
+		}
 		add_to_end(&(stack->stack_a), create_node(nb));
-		free(amount[i]);
+		free(amount);
 		i++;
 	}
-	free (amount);
 	return (1);
-}
-
-char split_all(int argc, char **argv)
-{
-	int i;
-	char **args;
-
-	i = 1;
-	while (i < argc)
-	{
-		args = ft_split(argv[i], ' ');
-		i++;
-	}
 }

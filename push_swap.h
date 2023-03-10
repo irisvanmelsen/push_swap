@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 12:51:22 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/08 18:23:30 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/10 20:24:49 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 typedef struct s_node
 {
 	int				nb;
-	// int				index;
 	struct s_node	*next;
 	struct s_node	*prev;
 }	t_node;
@@ -40,7 +39,7 @@ typedef struct s_stack
 //
 // ------------------------parser--------------------------------------
 int		digit_checker(char *str, int *nb);
-int		parse_args(char **argv, int argc, t_stack *stack);
+int		parse_args(char **argv, t_stack *stack);
 int		ft_atoi_overflow(char *str, int *nb);
 // ------------------------LIST----------------------------------------
 //
@@ -54,11 +53,11 @@ t_stack	*list_take_node(t_stack stack);
 //
 // ------------------------push----------------------------------------
 void	push(t_stack *stack);
-void	push_a(t_stack *stack, int total);
+void	push_b(t_stack *stack, int push);
 // ------------------------rotate--------------------------------------
 void	rotate(t_node *stack);
 void	rotate_rr(t_node *stack);
-void	rev_rotate(t_node *stack);
+void	rev_rotate(t_node **stack);
 void	rev_rotate_rr(t_node *stack);
 // ------------------------swap----------------------------------------
 void	swap(t_node *stack);
@@ -76,14 +75,14 @@ void	rotate_a(t_node *stack);
 void	rotate_b(t_node *stack);
 void	rotate_both(t_node *stack);
 // --------------------operations_rev_rotate---------------------------
-void	rev_rotate_a(t_node *stack);
+void	rev_rotate_a(t_node **stack);
 void	rev_rotate_b(t_node *stack);
 void	rev_rotate_both(t_node *stack);
 // ----------------------BUBBLESORT FUNCTIONS--------------------------
 //
 // ---------------------------bubblesort-------------------------------
-void	stack_sorted_same(t_node *stack, t_node *sorted);
-void	bubblesort(t_node *stack, t_node *sorted);
+// void	stack_sorted_same(t_node *stack, t_node *sorted);
+void	bubblesort(t_node *sorted);
 void	bs_sort(t_node *tmp, int *swap, t_node *stack);
 void	bs_swap(t_node *stack1, t_node *stack2);
 // -------------------------BUBBLESORT UTILS---------------------------
@@ -102,7 +101,9 @@ int		stack_length(t_node *stack);
 //
 // ---------------------quicksort functions---------------------------
 void	quicksort_a(t_stack *stack, int total);
+int		push_b_till_pivot(t_stack *stack, int push, int pivot);
 void	quicksort_b(t_stack *stack, int total);
+int		push_a_till_pivot(t_stack *stack, int push, int pivot);
 // -------------------------CHECK SORTING------------------------------
 //
 // ---------------------------sorting_a-------------------------------
@@ -114,7 +115,7 @@ int		sorted_a(t_node *stack_a, int total);
 // ---------------------------sorting_b--------------------------------
 int		check_b(t_stack *stack, int total);
 int		sorted_or_swap_b(t_stack *stack_b, int total);
-int		sorted_b(t_stack *stack, int total);
+int		sorted_b(t_node *stack_b, int push);
 // ------------------------------ERROR---------------------------------
 //
 // ------------------------------error---------------------------------
@@ -122,7 +123,7 @@ void	error_message(void);
 // --------------------------THREE NUMBERS-----------------------------
 //
 // ---------------------------few_numbers------------------------------
-void	sort_a_three(t_node *stack);
-void	sort_b_three(t_node *stack);
+void	sort_a_three(t_node **stack);
+void	sort_b_three(t_node **stack);
 
 #endif
