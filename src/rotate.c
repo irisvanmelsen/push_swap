@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 18:32:31 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/10 19:54:12 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/14 14:00:30 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@
 // Shift up all elements of stack b by 1.
 // The first element becomes the last one.
 
-void	rotate(t_node *stack)
+void	rotate(t_node **stack)
 {
-	if (!stack)
+	if (!*stack)
 		return ;
-	stack = stack->next;
+	*stack = (*stack)->next;
 }
 
 //  ra and rb at the same time
 
 void	rotate_rr(t_node *stack)
 {
-	rotate(stack);
-	rotate(stack);
+	rotate(&stack);
+	rotate(&stack);
 }
 
 // Shift down all elements of stack a by 1.

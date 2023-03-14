@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:39:29 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/10 18:39:13 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/14 15:02:43 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,18 @@ size_t	list_size(t_node *stack)
 	return (size);
 }
 
-// t_stack *list_take_node(t_stack stack)
-// {
-// 	(void) stack;
-// 	return (NULL);
-// }
+int	is_sorted(t_node *stack)
+{
+	t_node	*last_a;
 
-// t_stack *list_add_node_front(t_stack *node, t_stack stack)
-// {
-// 	(void) stack;
-// 	(void) node;
-// 	return (NULL);
-// }
+	last_a = stack->prev;
+	while (stack != last_a)
+	{
+		if (stack->nb > stack->next->nb)
+		{
+			return (0);
+		}
+		stack = stack->next;
+	}
+	return (1);
+}

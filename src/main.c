@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 17:31:00 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/10 14:51:45 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/14 15:01:07 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,21 @@ int	main (int argc, char **argv)
 		error_message();
 		return (0);
 	}
-	printf("main address stack->stack_a: %p\n", stack.stack_a);
+	// printf("main address stack->stack_a: %p\n", stack.stack_a);
 	if (!parse_args(argv, &stack))
 	{
 		error_message();
 		return (0);
 	}
-	printf("test in main\n");
+	// printf("test in main\n");
 	// printf("stack_a: %p, stack_b: %p\n", stack_a, stack_b);
 	stack.elements_a = argc - 1;
 	stack.sort = 0;
 	stack.elements_b = 0;
+	if (is_sorted(stack.stack_a) == 1)
+		return (0);
 	quicksort_a(&stack, argc - 1);
-	print_stacks(&stack);
+	// print_stacks(&stack);
 	return (EXIT_SUCCESS);
 }
 

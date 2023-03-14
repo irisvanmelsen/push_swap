@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 12:51:22 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/10 20:24:49 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/14 15:00:55 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,15 @@ int		ft_atoi_overflow(char *str, int *nb);
 t_node	*create_node(int nb);
 void	add_to_end(t_node **lst, t_node *new);
 size_t	list_size(t_node *stack);
-t_stack	*list_add_node_front(t_stack *node, t_stack stack);
-t_stack	*list_take_node(t_stack stack);
+int		is_sorted(t_node *stack);
 // ------------------------OPERATIONS----------------------------------
 //
 // ------------------------push----------------------------------------
-void	push(t_stack *stack);
+void	push_function_a_to_b(t_stack *stack);
+void	push_function_b_to_a(t_stack *stack);
 void	push_b(t_stack *stack, int push);
 // ------------------------rotate--------------------------------------
-void	rotate(t_node *stack);
+void	rotate(t_node **stack);
 void	rotate_rr(t_node *stack);
 void	rev_rotate(t_node **stack);
 void	rev_rotate_rr(t_node *stack);
@@ -71,12 +71,12 @@ void	swap_a(t_node *stack);
 void	swap_b(t_node *stack);
 void	swap_both(t_node *stack);
 // --------------------operations_rotate------------------------------
-void	rotate_a(t_node *stack);
-void	rotate_b(t_node *stack);
-void	rotate_both(t_node *stack);
+void	rotate_a(t_node **stack);
+void	rotate_b(t_node **stack);
+// void	rotate_both(t_node **stack);
 // --------------------operations_rev_rotate---------------------------
 void	rev_rotate_a(t_node **stack);
-void	rev_rotate_b(t_node *stack);
+void	rev_rotate_b(t_node **stack);
 void	rev_rotate_both(t_node *stack);
 // ----------------------BUBBLESORT FUNCTIONS--------------------------
 //

@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:18:09 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/10 14:42:23 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/14 14:51:47 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	print_stack(t_node *stack)
 			break ;
 		stack = stack->next;
 	}
-	printf("output: %d\n", stack->nb);
+	// printf("output: %d\n", stack->nb);
 }
 
 // // test function which prints the index

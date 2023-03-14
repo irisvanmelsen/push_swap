@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:40:18 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/10 20:03:42 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/14 14:50:40 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_a(t_stack *stack, int push)
 	// printf("stack_a address: %p\n", stack->stack_a);
 	if (sorted_a(stack->stack_a, push) == 1)
 	{
-		printf("stack->elements_a %zu\n", stack->elements_a);
+		// printf("stack->elements_a %zu\n", stack->elements_a);
 		return (1);
 	}
 	if (stack->elements_a > 3)
@@ -48,7 +48,7 @@ int	sorted_a(t_node *stack_a, int push)
 		return (1);
 	while (i < push)
 	{
-		if (stack_a->nb - i < stack_a->next->nb - i + 1)
+		if (stack_a->nb < stack_a->next->nb)
 			return (0);
 		stack_a = stack_a->next;
 		i++;

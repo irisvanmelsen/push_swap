@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:35:03 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/10 20:26:08 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/14 13:44:33 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	push_b_to_a(t_stack *stack)
 		write(1, "pa\n", 3);
 		return ;
 	}
-	push(stack);
+	push_function_b_to_a(stack);
 	if (stack->stack_a)
 		stack->elements_a++;
 	if (stack->stack_b)
@@ -34,7 +34,7 @@ void	push_a_to_b(t_stack *stack)
 		write(1, "pb\n", 3);
 		return ;
 	}
-	push(stack);
+	push_function_a_to_b(stack);
 	if (stack->stack_a)
 		stack->elements_a--;
 	if (stack->stack_b)

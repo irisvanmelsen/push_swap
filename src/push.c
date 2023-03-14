@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 21:28:33 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/10 21:00:52 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/14 14:53:58 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@
 // 	stack->stack_b = head;
 // }
 
-void push(t_stack *stack)
+void push_function_a_to_b(t_stack *stack)
 {
 	t_node	*tmp;
 	t_node	*last;
@@ -70,7 +70,7 @@ void push(t_stack *stack)
 	last = (stack->stack_a)->prev;
 	if (last->next == last)
 	{
-		printf("test\n");
+		// printf("test\n");
 		(stack->stack_a) = NULL;
 		return ;
 	}
@@ -93,6 +93,50 @@ void push(t_stack *stack)
 		head->prev->next = head;
 	}
 	stack->stack_b = head;
+}
+
+void push_function_b_to_a(t_stack *stack)
+{
+	t_node	*tmp;
+	t_node	*last;
+	t_node	*head;
+
+	head = (stack->stack_b);
+	tmp = (stack->stack_b)->next;
+	last = (stack->stack_b)->prev;
+	// printf("print stacks in b to a:");
+	// print_stacks(stack);
+	if (head->next == head)
+	{
+		// printf("test\n");
+		head->next = stack->stack_a;
+		head->prev = (stack->stack_a)->prev;
+		head->next->prev = head;
+		head->prev->next = head;
+		(stack->stack_b) = NULL;
+		stack->stack_a = head;
+		return ;
+	}
+	else
+	{
+		// printf("else\n");
+		tmp->prev = last;
+		last->next = tmp;
+		stack->stack_b = tmp;
+	}
+	if (!stack->stack_a)
+	{
+		head->next = head;
+		head->prev = head;
+	}
+	else
+	{
+		head->next = stack->stack_a;
+		head->prev = (stack->stack_a)->prev;
+		head->next->prev = head;
+		head->prev->next = head;
+	}
+	stack->stack_a = head;
 }
 
 void	push_b(t_stack *stack, int push)
