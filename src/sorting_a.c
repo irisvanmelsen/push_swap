@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:40:18 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/14 16:34:44 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:29:11 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ int	check_a(t_stack *stack, int push)
 {
 	if (sorted_or_swap_a(stack, push) == 1)
 		return (1);
-	// printf("stack_a address: %p\n", stack->stack_a);
 	if (sorted_a(stack->stack_a, push) == 1)
 	{
-		// printf("stack->elements_a %zu\n", stack->elements_a);
 		return (1);
 	}
 	if (stack->elements_a > 3)

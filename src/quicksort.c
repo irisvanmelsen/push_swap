@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 13:57:00 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/14 16:51:05 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:30:06 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,9 @@ void	quicksort_a(t_stack *stack, int push)
 	int	old_push;
 
 	old_push = push;
-	// print_stacks(stack);
 	pivot = find_pivot(stack->stack_a, push);
 	if (check_a(stack, push) == 1)
-	{
-		// printf("test in check_a quicksort\n");
-		// print_stacks(stack);
 		return ;
-	}
 	push = push_b_till_pivot(stack, push, pivot);
 	quicksort_a(stack, old_push - push);
 	stack->sort = 1;
@@ -43,35 +38,25 @@ int	push_b_till_pivot(t_stack *stack, int push, int pivot)
 
 	i = 0;
 	total_pushed = 0;
-	// printf("stack_a->nb: %d\nstack_a->next: %d\nstack_a->prev: %d\n", stack->stack_a->nb, stack->stack_a->next->nb, stack->stack_a->prev->nb);
 	while (i < push)
 	{
-	// printf("pivot stack_a: %d\n", find_pivot(stack->stack_a, push));
 		if ((stack->stack_a)->nb < pivot)
 		{
 			push_a_to_b(stack);
 			total_pushed++;
 		}
 		else
-		{
-			// print_stacks(stack);
 			rotate_a(&(stack->stack_a));
-			// print_stacks(stack);
-		}
 		i++;
 	}
 	i = 0;
-	// printf("stack->elements_a: %zu\n", stack->elements_a);
 	if (stack->elements_a <= 3)
 	{
 		sort_a_three(&(stack->stack_a));
 		return (total_pushed);
 	}
-	// printf("stack->elements_a check 2: %zu\n", stack->elements_a);
-	// printf("push: %d\n", push);
 	while (push - total_pushed > i && stack->sort == 1)
 	{
-		// printf("push in loop: %d\n", push);
 		rev_rotate_a(&(stack->stack_a));
 		i++;
 	}
@@ -80,7 +65,6 @@ int	push_b_till_pivot(t_stack *stack, int push, int pivot)
 
 void	quicksort_b(t_stack *stack, int push)
 {
-	// printf("start quicksort b\n");
 	int	pivot;
 	int	old_push;
 
@@ -88,7 +72,6 @@ void	quicksort_b(t_stack *stack, int push)
 	pivot = find_pivot(stack->stack_b, push);
 	if (check_b(stack, push) == 1)
 	{
-		// printf("test in check_b quicksort\n");
 		push_b(stack, push);
 		return ;
 	}
@@ -104,7 +87,6 @@ int	push_a_till_pivot(t_stack *stack, int push, int pivot)
 
 	i = 0;
 	total_pushed = 0;
-	// printf("stack_b pivot: %d\n", push);
 	while (push > i)
 	{
 		if ((stack->stack_b)->nb > pivot)
@@ -117,8 +99,6 @@ int	push_a_till_pivot(t_stack *stack, int push, int pivot)
 		i++;
 	}
 	i = 0;
-	// if ((*stack_a)->elements < 3)
-	// 	return ;
 	while (push - total_pushed > i && stack->sort == 1)
 	{
 		rev_rotate_b(&(stack->stack_b));

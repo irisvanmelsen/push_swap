@@ -6,7 +6,7 @@
 #    By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/03 13:51:13 by ivan-mel          #+#    #+#              #
-#    Updated: 2023/03/14 16:58:45 by ivan-mel         ###   ########.fr        #
+#    Updated: 2023/03/14 20:30:06 by ivan-mel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ all: ${NAME}
 ${NAME}: ${OBJ}
 	@echo ${Blue} Building ${NAME} ${Color_Off}
 	@${MAKE} -C libft
-	@${CC} $^ ${LIBS} -o ${NAME}
+	@${CC} $^ ${LIBS} ${FLAGS} -o ${NAME}
 	@echo ${Green} Complete 😊 ${Color_off}
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS) | $(OBJ_DIR)

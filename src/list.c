@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:39:29 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/14 15:02:43 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/14 20:52:33 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ t_node	*create_node(int nb)
 	node = malloc(sizeof(t_node));
 	if (!node)
 		return (NULL);
-	// stack->index = 0;
-	// stack->sort = 0;
-	// stack->elements_b = 0;
 	node->nb = nb;
 	node->next = NULL;
 	node->prev = NULL;
@@ -32,8 +29,8 @@ void	add_to_end(t_node **lst, t_node *new)
 {
 	t_node	*tmp;
 
-	// if (!lst)
-	// 	return;
+	if (!lst)
+		return ;
 	if (!*lst)
 	{
 		*lst = new;
@@ -43,12 +40,8 @@ void	add_to_end(t_node **lst, t_node *new)
 	else
 	{
 		tmp = *lst;
-	// printf("tmp->nb: %d\n", tmp->nb);
 		while (tmp->next != *lst)
-		{
-			// printf("tmp->nb: %d\n", tmp->nb);
 			tmp = tmp->next;
-		}
 		tmp->next = new;
 		new->prev = tmp;
 		new->next = *lst;
@@ -88,4 +81,21 @@ int	is_sorted(t_node *stack)
 		stack = stack->next;
 	}
 	return (1);
+}
+
+void	free_lst(t_node *list)
+{
+	t_node	*tmp;
+	t_node	*end;
+
+	if (!list)
+		return ;
+	end = list->prev;
+	while (list != end)
+	{
+		tmp = list->next;
+		free(list);
+		list = tmp;
+	}
+	free(list);
 }

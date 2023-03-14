@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 12:51:22 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/14 15:00:55 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/14 20:52:38 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ t_node	*create_node(int nb);
 void	add_to_end(t_node **lst, t_node *new);
 size_t	list_size(t_node *stack);
 int		is_sorted(t_node *stack);
+void	free_lst(t_node *stack);
 // ------------------------OPERATIONS----------------------------------
 //
 // ------------------------push----------------------------------------

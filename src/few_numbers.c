@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:46:16 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/14 16:50:12 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/14 17:36:45 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,15 @@ void	sort_a_three(t_node **stack)
 	if ((*stack)->nb > (*stack)->next->nb
 		&& (*stack)->next->nb > (*stack)->next->next->nb)
 	{
-		// printf("before swap:\n");
-		// print_stack(*stack);
 		swap_a(*stack);
-		// printf("after swap/ before rev rotate:\n");
 		rev_rotate_a(stack);
-		// printf("after rev rotate:\n");
-		// print_stack(*stack);
 	}
 	else if ((*stack)->nb - 1 > (*stack)->next->nb
 		&& (*stack)->next->nb < (*stack)->next->next->nb)
 		rotate_a(stack);
 	else if ((*stack)->nb == (*stack)->next->nb - 1
 		&& (*stack)->next->nb > (*stack)->next->next->nb)
-		{
-			// printf("stack_a before rra\n");
-			// printf("stack_a->nb: %d\nstack_a->next->nb: %d\nstack_a->prev->nb: %d\n", (*stack)->nb, (*stack)->next->nb, (*stack)->prev->nb);
-			rev_rotate_a(stack);
-			// printf("stack_a after rra\n");
-			// printf("stack_a->nb: %d\nstack_a->next->nb: %d\nstack_a->prev->nb: %d\n", (*stack)->nb, (*stack)->next->nb, (*stack)->prev->nb);
-		}
+		rev_rotate_a(stack);
 	else if ((*stack)->nb - 1 == (*stack)->next->nb
 		&& (*stack)->next->nb < (*stack)->next->next->nb)
 		swap_a(*stack);
@@ -50,7 +39,6 @@ void	sort_a_three(t_node **stack)
 
 void	sort_b_three(t_node **stack)
 {
-	// printf("SORT B THREE\n");
 	if ((*stack)->nb < (*stack)->next->nb
 		&& (*stack)->next->nb < (*stack)->next->next->nb)
 	{

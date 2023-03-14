@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:30:58 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/10 18:15:47 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/14 20:43:47 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	find_pivot(t_node *stack, int push)
 {
-	t_node	**sorted;
+	t_node	*sorted;
 	t_node	*tmp;
 	int		pivot;
 	int		i;
@@ -23,21 +23,18 @@ int	find_pivot(t_node *stack, int push)
 	sort = 1;
 	tmp = stack;
 	i = 0;
-	sorted = malloc(sizeof(t_node *));
-	if (!sorted)
-		error_message();
-	*sorted = NULL;
+	sorted = NULL;
 	while (tmp && i <= push)
 	{
-		add_to_end(sorted, create_node(stack->nb));
+		add_to_end(&sorted, create_node(stack->nb));
 		stack = stack->next;
 		if (tmp == stack)
 			break ;
 		i++;
 	}
-	bubblesort(*sorted);
-	pivot = find_middle(*sorted);
-	free(sorted);
+	bubblesort(sorted);
+	pivot = find_middle(sorted);
+	free_lst(sorted);
 	return (pivot);
 }
 

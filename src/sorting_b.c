@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:43:23 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/14 16:37:47 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/14 17:25:54 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ int	sorted_or_swap_b(t_stack *stack, int push)
 	if (push <= 2)
 	{
 		if (stack->stack_b->nb < stack->stack_b->next->nb)
-		{
-			// printf("test sorted or swap\n");
 			swap_b(stack->stack_b);
-		}
 		return (1);
 	}
 	return (0);
