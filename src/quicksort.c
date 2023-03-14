@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 13:57:00 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/14 14:51:24 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/14 16:51:05 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void	quicksort_a(t_stack *stack, int push)
 
 	old_push = push;
 	// print_stacks(stack);
+	pivot = find_pivot(stack->stack_a, push);
 	if (check_a(stack, push) == 1)
 	{
 		// printf("test in check_a quicksort\n");
 		// print_stacks(stack);
 		return ;
 	}
-	pivot = find_pivot(stack->stack_a, push);
 	push = push_b_till_pivot(stack, push, pivot);
 	quicksort_a(stack, old_push - push);
 	stack->sort = 1;
@@ -85,13 +85,13 @@ void	quicksort_b(t_stack *stack, int push)
 	int	old_push;
 
 	old_push = push;
+	pivot = find_pivot(stack->stack_b, push);
 	if (check_b(stack, push) == 1)
 	{
 		// printf("test in check_b quicksort\n");
 		push_b(stack, push);
 		return ;
 	}
-	pivot = find_pivot(stack->stack_b, push);
 	push = push_a_till_pivot(stack, push, pivot);
 	quicksort_a(stack, push);
 	quicksort_b(stack, old_push - push);

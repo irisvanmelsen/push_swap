@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:40:18 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/14 14:50:40 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/14 16:34:44 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	sorted_a(t_node *stack_a, int push)
 		return (1);
 	while (i < push)
 	{
-		if (stack_a->nb < stack_a->next->nb)
+		if (stack_a->nb > stack_a->next->nb)
 			return (0);
 		stack_a = stack_a->next;
 		i++;

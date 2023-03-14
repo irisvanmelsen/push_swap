@@ -6,17 +6,17 @@
 #    By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/03 13:51:13 by ivan-mel          #+#    #+#              #
-#    Updated: 2023/03/03 17:55:54 by ivan-mel         ###   ########.fr        #
+#    Updated: 2023/03/14 16:58:45 by ivan-mel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		:= 	push_swap
-LIBS		:=	./libft/libft.a -g -fsanitize=address
+LIBS		:=	./libft/libft.a
 HEADER		:=	-I libft
 HEADERS		:=	libft/libft.h
 #UTILS
 RM 			:=	rm -rf
-FLAGS 		:=	-Wall -Werror -Wextra -g -fsanitize=address
+FLAGS 		:=	-Wall -Werror -Wextra -g
 SRC			:=	parser.c \
 				main.c \
 				list.c \
