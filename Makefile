@@ -6,7 +6,7 @@
 #    By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/03 13:51:13 by ivan-mel          #+#    #+#              #
-#    Updated: 2023/03/14 20:30:06 by ivan-mel         ###   ########.fr        #
+#    Updated: 2023/03/15 12:56:46 by ivan-mel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@ SRC			:=	parser.c \
 				sorting_b.c \
 				quicksort.c \
 				few_numbers.c \
-				print_functions.c \
 				error.c \
 #SRCB		=	
 #OBJB_FILES	=	${SRCB:.c=.o}

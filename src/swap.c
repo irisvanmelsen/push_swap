@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 20:45:35 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/08 11:25:28 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/15 13:02:05 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,4 @@ void	swap(t_node *stack)
 	tmp = *one;
 	*one = *two;
 	*two = tmp;
-}
-
-// sa and sb at the same time.
-
-void	swap_ss(t_node *stack)
-{
-	swap(stack);
-	swap(stack);
 }

@@ -6,11 +6,13 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:39:29 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/14 20:52:33 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:48:48 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+// function that creates a node
 
 t_node	*create_node(int nb)
 {
@@ -24,6 +26,10 @@ t_node	*create_node(int nb)
 	node->prev = NULL;
 	return (node);
 }
+
+// checks whether lst exists and if not will create it
+// with the new node. If it already exists then it is added
+// to the end of the list
 
 void	add_to_end(t_node **lst, t_node *new)
 {
@@ -49,23 +55,8 @@ void	add_to_end(t_node **lst, t_node *new)
 	}
 }
 
-size_t	list_size(t_node *stack)
-{
-	size_t	size;
-	t_node	*home;
-
-	if (!stack)
-		return (0);
-	size = 1;
-	home = stack;
-	stack = stack->next;
-	while (stack != home)
-	{
-		stack = stack->next;
-		size++;
-	}
-	return (size);
-}
+// function that checks whether the list is already
+// sorted before starting the algorithm
 
 int	is_sorted(t_node *stack)
 {
@@ -82,6 +73,8 @@ int	is_sorted(t_node *stack)
 	}
 	return (1);
 }
+
+// frees every value in a list and the list itself
 
 void	free_lst(t_node *list)
 {

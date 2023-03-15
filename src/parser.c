@@ -6,11 +6,15 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:28:56 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/14 20:52:42 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/15 12:55:08 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+// checks whether there is a '-' or digit
+// if not an error appears
+// calls atoi to convert a character string to integer value
 
 int	digit_checker(char *str, int *nb)
 {
@@ -36,7 +40,11 @@ int	digit_checker(char *str, int *nb)
 	return (1);
 }
 // A normal atoi does not work due to overflow therefore
-// I am using this function.
+// I am using this function that checks whether the minus is
+// 1 while it is below 0 which is not possible unless overflow
+// also you want to be able to continue with INT_MIN because INT_MAX is one
+// higher than INT_MIN and otherwise you won't be able to print it as it
+// goes to overflow immediately
 
 int	ft_atoi_overflow(char *str, int *nb)
 {
@@ -65,6 +73,10 @@ int	ft_atoi_overflow(char *str, int *nb)
 	*nb *= minus;
 	return (1);
 }
+
+// parses arguments by checking whether it is a digit or '-'
+// then using the atoi_overflow function and at last creating
+// a list with nodes
 
 int	parse_args(char **argv, t_stack *stack)
 {

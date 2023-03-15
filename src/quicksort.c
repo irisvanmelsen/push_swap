@@ -6,15 +6,19 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 13:57:00 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/14 18:30:06 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/15 12:55:33 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-// pb: take the first element at the top of a and put it at the top of b.
-// ra: shift up all elements of stack a by 1, the first element
-// becomes the last one.
+// quicksort is a recursive algorithm
+// it first finds the perfect pivot with bubblesort
+// then it checks whether the stack has 2 or 3 elements in it
+// and whether these are sorted or not
+// then it either pushes, rotates or reverse rotates
+// quicksort is then called again until everything except
+// 2 or 3 elements are in stack_a, then quicksort b is called
 
 void	quicksort_a(t_stack *stack, int push)
 {
@@ -30,6 +34,13 @@ void	quicksort_a(t_stack *stack, int push)
 	stack->sort = 1;
 	quicksort_b(stack, push);
 }
+
+// checks if number is smaller than pivot
+// those numbers are being pushes to stack_b
+// otherwise it will rotate until it has been through
+// everything. If quicksort A is called from quicksort B
+// then there is also a possibility you have to reverse rotate
+// therefore there is a whileloop with a check
 
 int	push_b_till_pivot(t_stack *stack, int push, int pivot)
 {
@@ -51,10 +62,7 @@ int	push_b_till_pivot(t_stack *stack, int push, int pivot)
 	}
 	i = 0;
 	if (stack->elements_a <= 3)
-	{
-		sort_a_three(&(stack->stack_a));
-		return (total_pushed);
-	}
+		elements_three_or_less(stack, total_pushed);
 	while (push - total_pushed > i && stack->sort == 1)
 	{
 		rev_rotate_a(&(stack->stack_a));
@@ -62,6 +70,28 @@ int	push_b_till_pivot(t_stack *stack, int push, int pivot)
 	}
 	return (total_pushed);
 }
+
+// function that calls sort_a_three to sort the stack_a when
+// it only consists of three elements
+
+int	elements_three_or_less(t_stack *stack, int total_pushed)
+{
+	if (stack->elements_a == 3)
+	{
+		sort_a_three(&(stack->stack_a));
+		return (total_pushed);
+	}
+	return (0);
+}
+
+// quicksort is a recursive algorithm
+// it first finds the perfect pivot with bubblesort
+// then it checks whether the stack has 2 or 3 elements in it
+// and whether these are sorted or not
+// then it either pushes, rotates or reverse rotates
+// quicksort is then called again until everything except
+// 2 or 3 elements are in stack_b
+// each time quicksort_a is called so that is being sorted as well
 
 void	quicksort_b(t_stack *stack, int push)
 {
@@ -79,6 +109,11 @@ void	quicksort_b(t_stack *stack, int push)
 	quicksort_a(stack, push);
 	quicksort_b(stack, old_push - push);
 }
+
+// checks if number is smaller than pivot
+// those numbers are being pushes to stack_b
+// otherwise it will rotate until it has been through
+// everything. You might have to reverse rotate when done
 
 int	push_a_till_pivot(t_stack *stack, int push, int pivot)
 {

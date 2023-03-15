@@ -6,11 +6,14 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:40:18 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/14 18:29:11 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/15 12:55:44 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+// function that checks whether stack_a is already
+// sorted or whether operations need to be done to sort it
 
 int	check_a(t_stack *stack, int push)
 {
@@ -26,6 +29,9 @@ int	check_a(t_stack *stack, int push)
 	return (1);
 }
 
+// function that checks if there are only two or less elements
+// then checks whether they are at the right order or need to be swapped
+
 int	sorted_or_swap_a(t_stack *stack, int push)
 {
 	if (push <= 2)
@@ -36,6 +42,9 @@ int	sorted_or_swap_a(t_stack *stack, int push)
 	}
 	return (0);
 }
+
+// checks whether it is already sorted or needs to be sorted by
+// the sort_a_three function
 
 int	sorted_a(t_node *stack_a, int push)
 {

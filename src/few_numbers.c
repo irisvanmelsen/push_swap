@@ -6,11 +6,13 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:46:16 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/14 17:36:45 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/15 13:01:45 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+// function that is hardcoded to sort three numbers in stack_a
 
 void	sort_a_three(t_node **stack)
 {
@@ -36,6 +38,8 @@ void	sort_a_three(t_node **stack)
 		rotate_a(stack);
 	}
 }
+
+// function that is hardcoded to sort three numbers in stack_b
 
 void	sort_b_three(t_node **stack)
 {

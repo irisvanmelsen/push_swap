@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 18:32:31 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/14 14:00:30 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/15 13:01:57 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,6 @@ void	rotate(t_node **stack)
 	*stack = (*stack)->next;
 }
 
-//  ra and rb at the same time
-
-void	rotate_rr(t_node *stack)
-{
-	rotate(&stack);
-	rotate(&stack);
-}
-
 // Shift down all elements of stack a by 1.
 // The last element becomes the first one.
 // Shift down all elements of stack b by 1.
@@ -42,11 +34,4 @@ void	rev_rotate(t_node **stack)
 	if (!*stack)
 		return ;
 	*stack = (*stack)->prev;
-}
-// rra and rrb at the same time.
-
-void	rev_rotate_rr(t_node *stack)
-{
-	rev_rotate(&stack);
-	rev_rotate(&stack);
 }
