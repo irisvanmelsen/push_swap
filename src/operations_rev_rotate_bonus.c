@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   operations_rev_rotate_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/29 20:45:35 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/17 15:06:51 by ivan-mel         ###   ########.fr       */
+/*   Created: 2023/03/03 17:35:11 by ivan-mel          #+#    #+#             */
+/*   Updated: 2023/03/20 13:51:06 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-// Swap the first 2 elements at the top of stack a.
-// Do nothing if there is only one or no elements.
-// Swap the first 2 elements at the top of stack b.
-// Do nothing if there is only one or no elements.
+// function that reverse rotates in stack_a
 
-void	swap(t_node *stack)
+void	rev_rotate_a(t_node **stack)
 {
-	int		*one;
-	int		*two;
-	int		tmp;
+	rev_rotate(stack);
+	write(1, "rra\n", 4);
+}
 
-	if (!stack || (stack->next == stack))
-		return ;
-	one = &((stack)->nb);
-	two = &((stack)->next->nb);
-	tmp = *one;
-	*one = *two;
-	*two = tmp;
+// function that reverse rotates in stack_b
+
+void	rev_rotate_b(t_node **stack)
+{
+	rev_rotate(stack);
+	write(1, "rrb\n", 4);
+}
+
+void	rev_rotate_both(t_stack *stack)
+{
+	rev_rotate(&(stack->stack_a));
+	rev_rotate(&(stack->stack_b));
+	write(1, "rrr\n", 4);
 }

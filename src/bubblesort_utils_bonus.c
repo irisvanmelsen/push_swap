@@ -1,52 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bubblesort_utils.c                                 :+:      :+:    :+:   */
+/*   bubblesort_utils_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:30:58 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/03 17:46:20 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/20 14:42:57 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	find_pivot(t_stack *stack, int total)
+// looks for the pivot by first makign a copy of the 
+// original stack so we can sort the copy and return the pivot
+// bubblesort is used as an algorithm to sort
+// then the middle / pivot is found and returned after the
+// stack is being freed
+
+int	find_pivot(t_node *stack, int push)
 {
-	t_stack	**sorted;
-	t_stack	*tmp;
+	t_node	*sorted;
+	t_node	*tmp;
 	int		pivot;
 	int		i;
-	int		sort;
 
-	sort = 1;
 	tmp = stack;
-	sorted = malloc(sizeof(t_stack *));
-	*sorted = NULL;
 	i = 0;
-	if (!sorted)
+	sorted = NULL;
+	while (tmp && i <= push)
 	{
-		error_message();
-	}
-	while (tmp && i <= total)
-	{
-		add_to_end(sorted, create_node(stack->nb));
+		add_to_end(&sorted, create_node(stack->nb));
 		stack = stack->next;
 		if (tmp == stack)
 			break ;
 		i++;
 	}
-	bubblesort(stack, *sorted);
-	pivot = find_middle(*sorted);
-	free(sorted);
+	bubblesort(sorted);
+	pivot = find_middle(sorted);
+	free_lst(sorted);
 	return (pivot);
 }
 
-int	find_middle(t_stack *stack)
+// function that finds the middle, it does so
+// by having one node doing one step at the time and
+// the other two. When the two step node is at the end,
+// the one step node is halway
+
+int	find_middle(t_node *stack)
 {
-	t_stack	*one;
-	t_stack	*two;
+	t_node	*one;
+	t_node	*two;
 
 	one = stack;
 	two = stack;

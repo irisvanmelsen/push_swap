@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   operations_rotate_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/29 20:45:35 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/17 15:06:51 by ivan-mel         ###   ########.fr       */
+/*   Created: 2023/03/03 17:35:19 by ivan-mel          #+#    #+#             */
+/*   Updated: 2023/03/20 13:52:10 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-// Swap the first 2 elements at the top of stack a.
-// Do nothing if there is only one or no elements.
-// Swap the first 2 elements at the top of stack b.
-// Do nothing if there is only one or no elements.
+// function that rotates in stack_a
 
-void	swap(t_node *stack)
+void	rotate_a(t_node **stack)
 {
-	int		*one;
-	int		*two;
-	int		tmp;
+	rotate(stack);
+	write(1, "ra\n", 3);
+}
 
-	if (!stack || (stack->next == stack))
-		return ;
-	one = &((stack)->nb);
-	two = &((stack)->next->nb);
-	tmp = *one;
-	*one = *two;
-	*two = tmp;
+// function that rotates in stack_b
+
+void	rotate_b(t_node **stack)
+{
+	rotate(stack);
+	write(1, "rb\n", 3);
 }
