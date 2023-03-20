@@ -6,7 +6,7 @@
 /*   By: ivan-mel <ivan-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:39:29 by ivan-mel          #+#    #+#             */
-/*   Updated: 2023/03/15 11:48:48 by ivan-mel         ###   ########.fr       */
+/*   Updated: 2023/03/20 16:41:18 by ivan-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	add_to_end(t_node **lst, t_node *new)
 {
 	t_node	*tmp;
 
-	if (!lst)
+	if (!lst || !new)
 		return ;
 	if (!*lst)
 	{
@@ -65,7 +65,7 @@ int	is_sorted(t_node *stack)
 	last_a = stack->prev;
 	while (stack != last_a)
 	{
-		if (stack->nb > stack->next->nb)
+		if (stack->nb >= stack->next->nb)
 		{
 			return (0);
 		}
